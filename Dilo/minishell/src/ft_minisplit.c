@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:05:11 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/12 18:22:56 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,38 +92,6 @@ static char	**into_tab(char **tab, char const *s, int letters)
 	}
 	tab[b] = 0;
 	return (tab);
-}
-
-/*
-	compte le nombre de case à allouer dans le tableau
-	ignore tout ce qui se trouve entre single ou double quote
-*/
-static int	ft_redir_count(char *s, char c, int a, int tab_nb)
-{
-	while (s[a])
-	{
-		while (s[a] == c)
-		{
-			if (s[a] == c && ((s[a + 1] != ' ' && s[a + 1] != c)
-					|| (s[a + 1] != '\t' && s[a + 1] != c)))
-				tab_nb++;
-			else if (s[a] == c && s[a + 1] == '\0'
-				&& s[a - 1] != ' ' && s[a - 1] != '\t')
-				tab_nb++;
-			a++;
-		}
-		if (s[a] && s[a] != c)
-		{
-			while (s[a] && s[a] != c)
-			{
-				if (s[a] == 34 || s[a] == 39)
-					a = ez_count (s, s[a], a);
-				else
-					a++;
-			}
-		}
-	}
-	return (tab_nb);
 }
 
 //un split qui ignore les espaces à l'intérieur d'une single ou double quote
