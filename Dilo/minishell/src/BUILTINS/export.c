@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/13 15:04:51 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:56:22 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	add_env_var(t_crust *crust, char *var)
 	char	**new_env;
 
 	len = 0;
-	while (data->env[len])
+	new_env = NULL;
+	// Compter le nombre de variables d'environnement
+	while (crust->env[len])
 		len++;
     // Étendre le tableau env d'un slot
-	**new_env = realloc(crust->env, sizeof(char *) * (len + 2));
+	new_env = realloc(crust->env, sizeof(char *) * (len + 2));
 	if (!new_env)
 	{
 		write(STDERR_FILENO, "Error: Memory allocation failed\\n",

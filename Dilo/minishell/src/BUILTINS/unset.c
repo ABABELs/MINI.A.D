@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/13 15:05:05 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:59:03 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ void	unset(t_crust *crust, char *var_to_unset)
 	i = 0;
 	found = 0;
     // Parcourir les variables d'environnement pour trouver la variable à supprimer
-	while (data->env[i])
+	while (crust->env[i])
 	{
-		if (strncmp(data->env[i], var_to_unset, strlen(var_to_unset)) == 0 && data->env[i][strlen(var_to_unset)] == '=')
+		if (strncmp(crust->env[i], var_to_unset, strlen(var_to_unset)) == 0 && crust->env[i][strlen(var_to_unset)] == '=')
 		{
 			found = 1;
-			free(data->env[i]);  // Libérer la mémoire de la variable d'environnement trouvée
+			free(crust->env[i]);  // Libérer la mémoire de la variable d'environnement trouvée
 			j = i;
 			// Décaler le reste des variables d'environnement d'une position vers la gauche
-			while (data->env[j])
+			while (crust->env[j])
 			{
-				data->env[j] = data->env[j + 1];
+				crust->env[j] = crust->env[j + 1];
 				j++;
 			}
-			data->env[j] = NULL;  // Mettre la dernière position à NULL après le décalage
+			crust->env[j] = NULL;  // Mettre la dernière position à NULL après le décalage
 			break ;  // Sortir de la boucle car la variable a été supprimée
 		}
 		i++;

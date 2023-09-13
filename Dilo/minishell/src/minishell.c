@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 14:49:28 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:50:23 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	no_pipe(const char *str)
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer
-void	ft_minishell(t_crust *crust)
+void	ft_minishell(void)
 {
 	char	*str;
 

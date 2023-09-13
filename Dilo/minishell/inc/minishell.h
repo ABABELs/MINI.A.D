@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 15:28:25 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:52:34 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_crust
 {
 	char		*for_print;
 	char		*input;
+	char		**env;
 	char		*path;
 	int			pipe;
 	t_mantle	*lst_cmd;
