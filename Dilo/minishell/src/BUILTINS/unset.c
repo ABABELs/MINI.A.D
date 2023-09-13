@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/05 13:53:50 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:05:05 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 // 	} 
 // }
 
-void	unset(t_data *data, char *var_to_unset)
+void	unset(t_crust *crust, char *var_to_unset)
 {
 	int	i;
 	int	j;

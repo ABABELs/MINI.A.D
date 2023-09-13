@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:03:50 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/05 15:07:36 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 14:59:46 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 // 	}
 // }
 
-void	env(t_data *data)
+void	env(t_crust *crust)
 {
 	int	i;
 
 	i = 0;
-	while (data->env[i])
+	while (crust->env[i])
 	{
-		write(STDOUT_FILENO, data->env[i], strlen(data->env[i]));
+		write(STDOUT_FILENO, crust->env[i], strlen(crust->env[i]));
 		write(STDOUT_FILENO, "\\n", 1);  // Ajout d'une nouvelle ligne après chaque variable d'environnement
         i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 14:01:27 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:28:25 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,20 @@ int		ft_path_strlen(char *str, int b);
 //signal handler
 void	ft_sigint_handler(int si);
 void	ft_sigquit_handler(int si);
+
+//pipe
+void	pipe_or_not(t_crust *crust);
+void	join_the_pipe(t_crust *crust);
+void	run_my_child(t_core *cmd, t_crust *crust, t_list *list);
+void	lanch_pipe(t_crust *crust);
+
+//builtins
+void	cd(t_core *core);
+void	ft_echo(t_core *core);
+void	env(t_crust *crust);
+void	exit_shell(t_core *core);
+void	pwd(t_crust *crust);
+void	unset(t_crust *crust, char *var_to_unset);
 
 //test
 char	**ft_microsplit(char const *s);

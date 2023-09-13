@@ -6,13 +6,13 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/05 16:09:24 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:04:51 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_env_var(t_data *data, char *var)
+void	add_env_var(t_crust *crust, char *var)
 {
 	int		len;
 	char	**new_env;
@@ -21,7 +21,7 @@ void	add_env_var(t_data *data, char *var)
 	while (data->env[len])
 		len++;
     // Étendre le tableau env d'un slot
-	**new_env = realloc(data->env, sizeof(char *) * (len + 2));
+	**new_env = realloc(crust->env, sizeof(char *) * (len + 2));
 	if (!new_env)
 	{
 		write(STDERR_FILENO, "Error: Memory allocation failed\\n",
@@ -30,10 +30,10 @@ void	add_env_var(t_data *data, char *var)
 	}
 	new_env[len] = strdup(var);
 	new_env[len + 1] = NULL;
-	data->env = new_env;
+	crust->env = new_env;
 }
 
-void	export(t_data *data, char **args)
+void	export(t_crust *crust, char **args)
 {
 	int	i;
 
@@ -41,9 +41,9 @@ void	export(t_data *data, char **args)
 	if (!args[1])
 	{
 
-		while (data->env[i])
+		while (crust->env[i])
 		{
-			write(STDOUT_FILENO, data->env[i], strlen(data->env[i]));
+			write(STDOUT_FILENO, crust->env[i], strlen(crust->env[i]));
 			write(STDOUT_FILENO, "\\n", 1);
 			i++;
 		}
@@ -51,6 +51,6 @@ void	export(t_data *data, char **args)
 	else
 	{
 		// Ajouter ou modifier la variable d'environnement
-		add_env_var(data, args[1]);
+		add_env_var(crust, args[1]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/13 12:18:40 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:17:49 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	pipe_or_not(t_crust *crust)
 		return ;
 }
 
-//va cree les pipes
 void	lanch_pipe(t_crust *crust)
 {
 	t_core	*content;
@@ -91,6 +90,6 @@ void	run_my_child(t_core *cmd, t_crust *crust, t_list *list)
 	if (cmd->outfile > 2)
 		close(cmd->outfile);
 	get_path(crust, cmd);
-	if (execve(crust->path, cmd->str, crust->env) == -1)//penser a ajouter l env a la struct
+	if (execve(crust->path, cmd->tab, crust->env) == -1)//penser a ajouter l env a la struct
 		return ;
 }
