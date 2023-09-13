@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:19:56 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 11:26:03 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef enum s_type
 typedef struct s_core
 {
 	char	*str;
+	pid_t	child;//added
+	int		infile;//added
+	int		outfile;//added
+	int		fdp[2];//added
+	int		error;//added
 	t_type	type;
 }			t_core;
 

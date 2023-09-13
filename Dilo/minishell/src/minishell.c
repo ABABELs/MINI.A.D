@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:12:53 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 10:24:02 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ void	ft_minishell(void)
 		{	
 			if (is_quote_close(str) == 1)
 				printf("Quote is not closed\n");
-			else
-				no_pipe(str);
+			pipe_or_not(crust);
+			// else
+			// 	no_pipe(str);
 			add_history(str);
 		}
 	}
