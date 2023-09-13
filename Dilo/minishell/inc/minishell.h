@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 13:47:48 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 14:01:27 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ typedef struct s_core
 {
 	char	*str;
 	char	**tab;
+	int		infile;
+	int		outfile;
+	int		fdp[2];
+	pid_t	child;
+	int		error;
 	t_type	type;
 }			t_core;
 
