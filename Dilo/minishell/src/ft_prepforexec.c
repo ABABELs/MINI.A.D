@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 13:41:50 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 14:05:17 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	ft_joincmd(t_mantle *mantle)
 {
 	t_list	*list;
 	t_core	*core;
-	char	**tab;
 	int		tab_nb;
 
 	list = mantle->first;
@@ -73,11 +72,12 @@ void	ft_joincmd(t_mantle *mantle)
 		if (core->type == CMD)
 		{
 			tab_nb = ft_countcmd(list);
-			while (core->type == CMD)
+			core->tab = ft_cmd_tab(list, tab_nb);
+			while (core->type == CMD && list)
 			{
 				list = list->next;
-				tab = ft_cmd_tab(list, tab_nb);
-				core = (t_core *)list->content;
+				if (list)
+					core = (t_core *)list->content;
 			}
 		}
 		else

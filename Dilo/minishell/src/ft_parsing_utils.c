@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:36:35 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 12:19:43 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 14:13:11 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,27 @@ void	print_core(t_mantle *mantle)
 {
 	t_list	*tmp;
 	t_core	*core_tmp;
+	int		a;
 
 	tmp = (t_list *)mantle->first;
+	a = 0;
 	while (tmp)
 	{
 		core_tmp = (t_core *)tmp->content;
 		if (!core_tmp->str)
 			return ;
-		ft_printf("%s", core_tmp->str);
+		ft_printf("%s\n", core_tmp->str);
+		if (core_tmp->tab)
+		{
+			while (core_tmp->tab[a])
+			{
+				ft_printf("cmd tab : %s\n", core_tmp->tab[a]);
+				a++;
+			}
+		}
 		ft_printf("%d\n", core_tmp->type);
 		tmp = tmp->next;
+		a = 0;
 	}
 }
 
