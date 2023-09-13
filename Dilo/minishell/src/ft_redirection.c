@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 12:52:51 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 14:01:49 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_fd_type(t_mantle *mantle)
 	t_list	*list;
 
 	list = mantle->first;
-	while (list)
+	while (list && list->next)
 	{
 		core = (t_core *)list->content;
 		core2 = (t_core *)list->next->content;
