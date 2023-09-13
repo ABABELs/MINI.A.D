@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 11:02:58 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 13:32:30 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@ typedef enum s_type
 {
 	NO,
 	CMD,
-	FLAG,
-	ARG,
 	REDIR_IN,
 	REDIR_OUT,
 	PIPE,
+	APPEND,
+	HERDOC,
+	FD,
 }			t_type;
 
 //contient chaque mot ainsi que son attribut, noyau du parsing
 typedef struct s_core
 {
 	char	*str;
+	char	**cmd;
 	t_type	type;
 }			t_core;
 
@@ -89,6 +91,10 @@ int		find_char(char	*tab, char c);
 void	print_core(t_mantle *mantle);
 int		ft_ispth(char *str);
 int		ft_isquote(char *str);
+
+//redirection
+int		ft_strcmp(const char *s1, const char *s2);
+void	ft_type_set(t_mantle *mantle);
 
 //path handler
 int		check_dollars(char str);

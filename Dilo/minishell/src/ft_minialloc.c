@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 11:41:30 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 11:19:41 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,9 @@ static t_core	*ft_alloc_core(char **tab, int a)
 			return (NULL);
 		core->str = ft_print_path(core->str, path);
 	}
+	core->type = NO;
 	if (!core->str)
 		return (core);
-	if (a == 0)
-		core->type = CMD;
-	else if (find_char(tab[a], '-') == 1)
-		core->type = FLAG;
-	else
-		core->type = ARG;
 	return (core);
 }
 

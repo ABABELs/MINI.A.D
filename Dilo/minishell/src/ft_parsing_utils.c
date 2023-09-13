@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:36:35 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/08/21 10:03:29 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 12:19:43 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	print_core(t_mantle *mantle)
 		core_tmp = (t_core *)tmp->content;
 		if (!core_tmp->str)
 			return ;
-		ft_printf("%s\n", core_tmp->str);
+		ft_printf("%s", core_tmp->str);
+		ft_printf("%d\n", core_tmp->type);
 		tmp = tmp->next;
 	}
 }

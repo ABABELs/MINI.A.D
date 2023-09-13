@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 10:57:54 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 12:20:46 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	no_pipe(const char *str)
 	if (!tab)
 		return ;
 	ft_alloc_mantle(tab, crust->lst_cmd);
+	ft_type_set(crust->lst_cmd);
 	(remove_quotes(crust->lst_cmd), print_core(crust->lst_cmd));
 }
 
@@ -83,8 +84,11 @@ void	ft_minishell(void)
 	free(str);
 }
 
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
+	(void)env;
 	signal(SIGINT, ft_sigint_handler);
 	signal(SIGQUIT, ft_sigquit_handler);
 	ft_minishell();
