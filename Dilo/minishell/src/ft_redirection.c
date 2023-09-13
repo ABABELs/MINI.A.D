@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 11:42:37 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 10:57:01 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,30 +70,23 @@
 // 	}
 // }
 
-// //compte le nombre de pipe qu'il y a dans l'input et malloc un tableau de int
-// void	ft_pipecount(char *str, t_space *space)
-// {
-// 	int	a;
-// 	int	b;
+//compte le nombre de pipe qu'il y a dans l'input et malloc un tableau de int
+int	ft_pipecount(char *str)
+{
+	int	a;
+	int	b;
 
-// 	a = 0;
-// 	b = 0;
-// 	while (str[a])
-// 	{
-// 		if (str[a] == '|')
-// 		{
-// 			if (str[a + 1] == '|' && str[a + 2] != '|')
-// 				b++;
-// 			else if (str[a + 1] != '|')
-// 				b++;
-// 			while (str[a] == '|')
-// 				a++;
-// 		}
-// 		else
-// 			a++;
-// 	}
-// 	space->tab = malloc(sizeof(int *) * (b + 2));
-// 	if (!space->tab)
-// 		return ;
-// 	ft_pipeo(str, space);
-// }
+	a = 0;
+	b = 0;
+	while (str[a])
+	{
+		if (str[a] == '|')
+		{
+			while (str[a] == '|')
+				a++;
+			b++;
+		}
+		a++;
+	}
+	return (b);
+}

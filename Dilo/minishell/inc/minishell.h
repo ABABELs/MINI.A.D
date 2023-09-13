@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:19:56 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 11:02:58 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef enum s_type
 	CMD,
 	FLAG,
 	ARG,
+	REDIR_IN,
+	REDIR_OUT,
+	PIPE,
 }			t_type;
 
 //contient chaque mot ainsi que son attribut, noyau du parsing
@@ -65,7 +68,6 @@ typedef struct s_pathport
 	char	c;
 }			t_pathport;
 
-
 //cmd cleaner
 char	*ft_cmdisgood(char *str);
 
@@ -81,6 +83,7 @@ char	**free_all(char **tab, int a);
 void	ft_alloc_mantle(char **tab, t_mantle *mantle);
 
 //parsing
+int		ft_pipecount(char *str);
 int		is_quote_close(char *str);
 int		find_char(char	*tab, char c);
 void	print_core(t_mantle *mantle);

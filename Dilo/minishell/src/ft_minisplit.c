@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:22:56 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 10:58:06 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ char	**ft_minisplit(char const *s)
 	real_tab = ft_redir_count((char *)s, '|', a, tab_nb) + real_tab;
 	real_tab = ft_redir_count((char *)s, '<', a, tab_nb) + (real_tab);
 	real_tab = ft_redir_count((char *)s, '>', a, tab_nb) + (real_tab);
-	ft_printf("%d\n", real_tab);
 	tab = malloc(sizeof(char *) * (real_tab + 1));
 	if (tab == 0)
 		return (NULL);

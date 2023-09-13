@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:12:53 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 10:57:54 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	no_pipe(const char *str)
 	crust->lst_cmd = malloc(sizeof(t_mantle));
 	if (!crust || !crust->lst_cmd)
 		return ;
+	crust->pipe = ft_pipecount((char *)str);
 	crust->input = (char *)str;
 	tab = ft_minisplit(crust->input);
 	if (!tab)
