@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 13:32:30 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 13:45:54 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef enum s_type
 typedef struct s_core
 {
 	char	*str;
-	char	**cmd;
 	t_type	type;
 }			t_core;
 
