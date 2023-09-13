@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 11:26:03 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 11:31:04 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum s_type
 	CMD,
 	FLAG,
 	ARG,
+	PIPE,
 }			t_type;
 
 //contient chaque mot ainsi que son attribut, noyau du parsing
