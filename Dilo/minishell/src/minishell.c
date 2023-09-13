@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 13:46:25 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/13 13:54:12 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	no_pipe(const char *str)
 	ft_alloc_mantle(tab, crust->lst_cmd);
 	ft_type_set(crust->lst_cmd);
 	(remove_quotes(crust->lst_cmd), print_core(crust->lst_cmd));
+	pipe_or_not(crust);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer
@@ -79,7 +80,6 @@ void	ft_minishell(t_crust *crust)
 			else
 			{
 				no_pipe(str);
-				pipe_or_not(crust);
 			}
 			add_history(str);
 		}
