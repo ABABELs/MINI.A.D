@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/13 15:56:22 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/14 13:50:00 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	add_env_var(t_crust *crust, char *var)
 	crust->env = new_env;
 }
 
-void	export(t_crust *crust, char **args)
+void	export(t_core *core, t_crust *crust)
 {
 	int	i;
 
 	i = 0;
-	if (!args[1])
+	if (!core->tab[1])
 	{
 
 		while (crust->env[i])
@@ -53,6 +53,6 @@ void	export(t_crust *crust, char **args)
 	else
 	{
 		// Ajouter ou modifier la variable d'environnement
-		add_env_var(crust, args[1]);
+		add_env_var(crust, crust->env[1]);
 	}
 }

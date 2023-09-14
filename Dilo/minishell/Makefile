@@ -6,7 +6,7 @@
 #    By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/13 16:00:04 by arthurabel       ###   ########.fr        #
+#    Updated: 2023/09/14 13:42:36 by arthurabel       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/ft_minialloc.c src/ft_clean_cmd.c src/ft_redirection.c src/ft_redirection_utils.c \
 			src/ft_prepforexec.c \
 			src/BUILTINS/cd.c src/BUILTINS/echo.c src/BUILTINS/env.c src/BUILTINS/exit.c src/BUILTINS/export.c \
-			src/BUILTINS/pwd.c src/BUILTINS/unset.c \
+			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
 			src/PIPEX/pipe.c \
 			
 OBJECTS = $(SOURCES:.c=.o)

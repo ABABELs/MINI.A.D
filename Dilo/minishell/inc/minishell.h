@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 15:52:34 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/14 14:19:03 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,12 @@ void	ft_echo(t_core *core);
 void	env(t_crust *crust);
 void	exit_shell(t_core *core);
 void	pwd(t_crust *crust);
-void	unset(t_crust *crust, char *var_to_unset);
+void	unset(t_core *core, t_crust *crust);
+char	**remove_env_var(char **env, int index);
+int		find_env_var(char **env, char *var);
+int		ft_isbuiltins(t_core *core);
+void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
+void	export(t_core *core, t_crust *crust);
 
 //test
 char	**ft_microsplit(char const *s);

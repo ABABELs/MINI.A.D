@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/13 16:01:32 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/14 13:46:28 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,20 @@ void	lanch_pipe(t_crust *crust)
 		content = (t_core *)list->content;
 		if (content->type == CMD)
 		{
+			if (ft_isbuiltins(content) == 1)
+				exec_my_builtins(content->tab[0], content, crust);
 			content->child = fork();
-			if (content->type == CMD)
-			{
-				if (content->child < 0)
-					return (perror("fork failed"));
-				else if (content->child == 0)
-					run_my_child(content, crust, list);
-				if (content->infile > 0)
-					close(content->infile);
-				if (content->outfile > 2)
-					close(content->outfile);
-				waitpid(content->child, 0, 0);
-			}
-			list = list->next;
+			if (content->child < 0)
+				return (perror("fork failed"));
+			else if (content->child == 0)
+				run_my_child(content, crust, list);
+			if (content->infile > 0)
+				close(content->infile);
+			if (content->outfile > 2)
+				close(content->outfile);
+			waitpid(content->child, 0, 0);
 		}
+			list = list->next;
 	}
 }
 
