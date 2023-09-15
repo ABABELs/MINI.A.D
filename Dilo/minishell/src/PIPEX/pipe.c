@@ -6,7 +6,7 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/13 12:18:40 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/14 13:46:28 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	pipe_or_not(t_crust *crust)
 		return ;
 }
 
-//va cree les pipes
 void	lanch_pipe(t_crust *crust)
 {
 	t_core	*content;
@@ -34,21 +33,20 @@ void	lanch_pipe(t_crust *crust)
 		content = (t_core *)list->content;
 		if (content->type == CMD)
 		{
+			if (ft_isbuiltins(content) == 1)
+				exec_my_builtins(content->tab[0], content, crust);
 			content->child = fork();
-			if (content->type == CMD)
-			{
-				if (content->child < 0)
-					return (perror("fork failed"));
-				else if (content->child == 0)
-					run_my_child(content, crust, list);
-				if (content->infile > 0)
-					close(content->infile);
-				if (content->outfile > 2)
-					close(content->outfile);
-				waitpid(content->child, 0, 0);
-			}
-			list = list->next;
+			if (content->child < 0)
+				return (perror("fork failed"));
+			else if (content->child == 0)
+				run_my_child(content, crust, list);
+			if (content->infile > 0)
+				close(content->infile);
+			if (content->outfile > 2)
+				close(content->outfile);
+			waitpid(content->child, 0, 0);
 		}
+			list = list->next;
 	}
 }
 
@@ -69,7 +67,7 @@ void	join_the_pipe(t_crust *crust)
 				prev = (t_core *)list->prev->content;
 			if (list->next)
 				next = (t_core *)list->next->content;
-			if (pipe((t_core *)current->fdp) == -1)
+			if (pipe(current->fdp) == -1)
 				return (perror("pipe failed"));
 			if (prev->error != 1 && prev->outfile == 1 && next->infile == 0)
 				prev->outfile = current->fdp[1];
@@ -90,7 +88,7 @@ void	run_my_child(t_core *cmd, t_crust *crust, t_list *list)
 		close(cmd->infile);
 	if (cmd->outfile > 2)
 		close(cmd->outfile);
-	get_path(crust, cmd);
-	if (execve(crust->path, cmd->str, crust->env) == -1)//penser a ajouter l env a la struct
+	// get_path(crust, cmd);
+	if (execve(crust->path, cmd->tab, crust->env) == -1)//penser a ajouter l env a la struct
 		return ;
 }

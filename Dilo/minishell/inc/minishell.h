@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 14:07:47 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/15 23:43:55 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_crust
 {
 	char		*for_print;
 	char		*input;
+	char		**env;
 	char		*path;
 	int			pipe;
 	t_mantle	*lst_cmd;
@@ -111,8 +112,27 @@ int		ft_path_strlen(char *str, int b);
 void	ft_sigint_handler(int si);
 void	ft_sigquit_handler(int si);
 
-//cmdprep
-void	ft_joincmd(t_mantle *mantle);
+//pipe
+void	pipe_or_not(t_crust *crust);
+void	join_the_pipe(t_crust *crust);
+void	run_my_child(t_core *cmd, t_crust *crust, t_list *list);
+void	lanch_pipe(t_crust *crust);
+
+//builtins
+void	cd(t_core *core);
+void	ft_echo(t_core *core);
+void	env(t_crust *crust);
+void	exit_shell(t_core *core);
+void	pwd(t_crust *crust);
+void	unset(t_core *core, t_crust *crust);
+char	**remove_env_var(char **env, int index);
+int		find_env_var(char **env, char *var);
+int		ft_isbuiltins(t_core *core);
+void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
+void	export(t_core *core, t_crust *crust);
+
+//test
+char	**ft_microsplit(char const *s);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);

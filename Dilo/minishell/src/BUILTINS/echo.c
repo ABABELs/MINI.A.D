@@ -6,13 +6,13 @@
 /*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:56:03 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/05 16:17:36 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/13 15:51:42 by arthurabel       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_echo(t_data *data, char **args)
+void	ft_echo(t_core *core)
 {
 	int	i;
 	int	line;
@@ -20,18 +20,18 @@ void	ft_echo(t_data *data, char **args)
 	i = 1;
 	line = 1;
     // Vérifier l'option "-n"
-	if (args[i] && strcmp(args[i], "-n") == 0)
+	if (core->tab[i] && strcmp(core->tab[i], "-n") == 0)
 	{
 		line = 0;
 		i++;
 	}
 
     // Imprimer les arguments restants
-	while (args[i])
+	while (core->tab[i])
 	{
-		write(STDOUT_FILENO, args[i], strlen(args[i]));
+		write(STDOUT_FILENO, core->tab[i], strlen(core->tab[i]));
         // Si ce n'est pas le dernier argument, imprimer un espace
-		if (args[i + 1])
+		if (core->tab[i + 1])
 			write(STDOUT_FILENO, " ", 1);
 		i++;
 	}
