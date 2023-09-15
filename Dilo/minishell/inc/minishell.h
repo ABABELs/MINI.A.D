@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 23:43:55 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/15 23:49:53 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_pathport
 }			t_pathport;
 
 //cmd cleaner
+void	ft_joincmd(t_mantle *mantle);
 char	*ft_cmdisgood(char *str);
 
 //minisplit
@@ -130,9 +131,6 @@ int		find_env_var(char **env, char *var);
 int		ft_isbuiltins(t_core *core);
 void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
 void	export(t_core *core, t_crust *crust);
-
-//test
-char	**ft_microsplit(char const *s);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);
