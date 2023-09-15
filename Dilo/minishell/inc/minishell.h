@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 14:02:19 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/15 14:07:47 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ typedef struct s_core
 {
 	char	*str;
 	char	**tab;
+	int		infile;
+	int		outfile;
+	int		fdp[2];
+	pid_t	child;
+	int		error;
 	t_type	type;
 }			t_core;
 
@@ -91,6 +96,7 @@ int		find_char(char	*tab, char c);
 void	print_core(t_mantle *mantle);
 int		ft_ispth(char *str);
 int		ft_isquote(char *str);
+int		ft_after_redir(t_mantle *mantle);
 
 //redirection
 int		ft_strcmp(const char *s1, const char *s2);
@@ -107,5 +113,9 @@ void	ft_sigquit_handler(int si);
 
 //cmdprep
 void	ft_joincmd(t_mantle *mantle);
+
+//print error
+char	*ft_ministrncpy(char *dest, char *src, int a, int b);
+int		ft_print_msg(int a, char *str);
 
 #endif

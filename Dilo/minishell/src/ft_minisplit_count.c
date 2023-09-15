@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:17:39 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:20:45 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/15 13:31:30 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ static int	ft_verif(char *s, int a)
 		return (1);
 	else
 		return (0);
+}
+
+static int	ft_verif2(char *s, int a, char c)
+{
+	if (s[a] == c && ((s[a + 1] != ' ' && s[a + 1] != c)
+			|| (s[a + 1] != '\t' && s[a + 1] != c)))
+		return (1);
+	else if (s[a] == c && s[a + 1] == '\0'
+		&& s[a - 1] != ' ' && s[a - 1] != '\t')
+		return (2);
+	return (0);
 }
 
 /*
@@ -74,11 +85,9 @@ int	ft_redir_count(char *s, char c, int a, int tab_nb)
 	{
 		while (s[a] == c)
 		{
-			if (s[a] == c && ((s[a + 1] != ' ' && s[a + 1] != c)
-					|| (s[a + 1] != '\t' && s[a + 1] != c)))
+			if (ft_verif2(s, a, c) == 1)
 				tab_nb++;
-			else if (s[a] == c && s[a + 1] == '\0'
-				&& s[a - 1] != ' ' && s[a - 1] != '\t')
+			else if (ft_verif2(s, a, c) == 2)
 				tab_nb++;
 			a++;
 		}

@@ -6,11 +6,38 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 11:22:54 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/15 22:45:16 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	ft_threedirection(char *s, int a)
+{
+	char	*rstr;
+	int		flag;
+
+	flag = 0;
+	if (is_sep(s[a]) == 3)
+	{
+		if (is_sep(s[a + 1]) == 3)
+			flag++;
+		flag++;
+	}
+	else if (is_sep(s[a]) == 2)
+	{
+		if (s[a] == '<' && is_sep(s[a + 1]) == 2)
+			flag++;
+		else if (is_sep(s[a + 1]) == 2 || is_sep(s[a + 1]) == 3)
+			flag++;
+		flag++;
+	}
+	rstr = malloc(sizeof(char) * flag + 1);
+	if (!rstr)
+		return (-1);
+	rstr = ft_ministrncpy(rstr, s, a, flag);
+	return (ft_print_msg(1, rstr));
+}
 
 //malloc et remplie la chaine de caractère 
 static int	no_quote(char **tab, char *s, int letters)
@@ -39,23 +66,26 @@ static int	no_quote(char **tab, char *s, int letters)
 	return (d);
 }
 
-static int	ft_redirjsp(char **tab, char *s, int letters)
+static int	ft_redirjsp(char **tab, char *s, int letters, int a)
 {
-	int	a;
-
-	a = 0;
 	if (is_sep(s[letters + a]) == 2 && s[letters + a])
 	{
 		while (is_sep(s[letters + a]) == 2 && s[letters + a])
-		a++;
+		{
+			if (a >= 2)
+				return (ft_threedirection(s, letters + a));
+			a++;
+		}
 	}
 	else if (is_sep(s[letters + a]) == 3 && s[letters + a])
 	{
 		while (is_sep(s[letters + a]) == 3 && s[letters + a])
-		a++;
+		{
+			if (a > 0)
+				return (ft_threedirection(s, letters + a));
+			a++;
+		}
 	}
-	if (a > 2)
-		return (-1);
 	*tab = malloc(sizeof(char) * (a + 1));
 	if (*tab == 0)
 		return (-1);
@@ -78,9 +108,9 @@ static char	**into_tab(char **tab, char const *s, int letters)
 		if (is_sep(s[letters]) == 0)
 			d = no_quote(&tab[b++], (char *)s, letters);
 		else if (is_sep(s[letters]) == 2)
-			d = ft_redirjsp(&tab[b++], (char *)s, letters);
+			d = ft_redirjsp(&tab[b++], (char *)s, letters, d);
 		else if (is_sep(s[letters]) == 3)
-			d = ft_redirjsp(&tab[b++], (char *)s, letters);
+			d = ft_redirjsp(&tab[b++], (char *)s, letters, d);
 		else
 			letters++;
 		if (d != 0)
@@ -109,8 +139,8 @@ char	**ft_minisplit(char const *s)
 		return (NULL);
 	real_tab = ft_count_tab((char *)s, a, tab_nb);
 	real_tab = ft_redir_count((char *)s, '|', a, tab_nb) + real_tab;
-	real_tab = ft_redir_count((char *)s, '<', a, tab_nb) + (real_tab);
-	real_tab = ft_redir_count((char *)s, '>', a, tab_nb) + (real_tab);
+	real_tab = ft_redir_count((char *)s, '<', a, tab_nb) + real_tab;
+	real_tab = ft_redir_count((char *)s, '>', a, tab_nb) + real_tab;
 	tab = malloc(sizeof(char *) * (real_tab + 1));
 	if (tab == 0)
 		return (NULL);
