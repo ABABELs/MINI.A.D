@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:03:50 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/13 14:59:46 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/18 12:33:48 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	env(t_crust *crust)
 	while (crust->env[i])
 	{
 		write(STDOUT_FILENO, crust->env[i], strlen(crust->env[i]));
-		write(STDOUT_FILENO, "\\n", 1);  // Ajout d'une nouvelle ligne après chaque variable d'environnement
-        i++;
+		write(STDOUT_FILENO, "\\n", 1);
+		i++;
 	}
 }

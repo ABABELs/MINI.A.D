@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 23:48:44 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/18 15:17:36 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	remove_quotes(t_mantle *mantle)
 	}
 }
 
-//gère l'input si il n'y a pas de pipe
 static void	no_pipe(const char *str)
 {
 	t_crust		*crust;
@@ -58,7 +57,7 @@ static void	no_pipe(const char *str)
 	ft_type_set(crust->lst_cmd);
 	remove_quotes(crust->lst_cmd);
 	ft_joincmd(crust->lst_cmd);
-	print_core(crust->lst_cmd);
+	// print_core(crust->lst_cmd);
 	pipe_or_not(crust);
 }
 

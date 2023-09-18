@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 23:49:53 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/18 16:08:37 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define CWD_SIZE 64
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -19,6 +20,8 @@
 # include "libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <dirent.h>
+
 
 //pour déclarer le type
 typedef enum s_type
@@ -43,6 +46,7 @@ typedef struct s_core
 	int		fdp[2];
 	pid_t	child;
 	int		error;
+	int		exit_code;
 	t_type	type;
 }			t_core;
 
@@ -116,11 +120,16 @@ void	ft_sigquit_handler(int si);
 //pipe
 void	pipe_or_not(t_crust *crust);
 void	join_the_pipe(t_crust *crust);
-void	run_my_child(t_core *cmd, t_crust *crust, t_list *list);
+void	run_my_child(t_core *cmd, t_crust *crust);
 void	lanch_pipe(t_crust *crust);
+void	exec_my_pipe(t_core *core, t_crust *crust);
+void	close_fd(t_core *core);
+t_core	*find_prev(t_list *list);
+void	not_used_pipe(t_crust *crust);
+void	print_lst_parsing(t_list *lst_parsing);
 
 //builtins
-void	cd(t_core *core);
+void	cd(t_core *core, t_crust *crust);
 void	ft_echo(t_core *core);
 void	env(t_crust *crust);
 void	exit_shell(t_core *core);

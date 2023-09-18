@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
+#    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/15 23:43:58 by dilovancand      ###   ########.fr        #
+#    Updated: 2023/09/18 15:21:33 by aabel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/ft_prepforexec.c \
 			src/BUILTINS/cd.c src/BUILTINS/echo.c src/BUILTINS/env.c src/BUILTINS/exit.c src/BUILTINS/export.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
-			src/PIPEX/pipe.c \
-			 src/ft_error.c src/ft_print_error_msg.c
+			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c \
+			src/ft_error.c src/ft_print_error_msg.c \
+			
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
