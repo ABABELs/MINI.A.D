@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:04:48 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/18 15:18:48 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 17:11:49 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	print_lst_parsing(t_list *lst_parsing)
 		ft_printf("%s", content->str);
 		if (content->type == PIPE)
 			ft_printf("\tPipe");
+		// else if (content->type == HEREDOC)
+		// 	ft_printf("\tHeredoc");
 		else if (content->type == APPEND)
 			ft_printf("\tAppend");
 		else if (content->type == CMD)

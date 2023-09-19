@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 16:25:33 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 17:18:03 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	not_used_pipe(t_crust *crust)
 			prev = ((t_core *)list->prev->content);
 			next = ((t_core *)list->next->content);
 			if ((prev->outfile == current->infile
-					&& current->outfile == next->infile))
+					&& current->outfile != next->infile))
 				prev->outfile = -1;
 			if ((prev->outfile != current->infile
-					&& current->outfile != next->infile))
+					&& current->outfile == next->infile))
 				next->infile = -1;
 		}
 		list = list->next;

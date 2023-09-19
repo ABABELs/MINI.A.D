@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/14 14:22:27 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/19 17:08:53 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,38 +76,3 @@ void	unset(t_core *core, t_crust *crust)
 		arg++;
 	}
 }
-
-
-// void	unset(t_core *core, t_crust *crust)
-// {
-	// int	i;
-	// int	j;
-	// int	found;
-
-	// i = 0;
-	// found = 0;
-    // // Parcourir les variables d'environnement pour trouver la variable à supprimer
-	// while (crust->env[i])
-	// {
-	// 	if (strncmp(crust->env[i], , strlen()) == 0 && crust->env[i][strlen()] == '=')
-	// 	{
-	// 		found = 1;
-	// 		free(crust->env[i]);  // Libérer la mémoire de la variable d'environnement trouvée
-	// 		j = i;
-	// 		// Décaler le reste des variables d'environnement d'une position vers la gauche
-	// 		while (crust->env[j])
-	// 		{
-	// 			crust->env[j] = crust->env[j + 1];
-	// 			j++;
-	// 		}
-	// 		crust->env[j] = NULL;  // Mettre la dernière position à NULL après le décalage
-	// 		break ;  // Sortir de la boucle car la variable a été supprimée
-	// 	}
-	// 	i++;
-	// }
-	// if (!found)
-	// {
-    //     // La variable à supprimer n'a pas été trouvée dans l'environnement
-    //     // Gérer ce cas comme vous le souhaitez, par exemple en affichant un message ou en ne faisant rien
-    // }
-// }
