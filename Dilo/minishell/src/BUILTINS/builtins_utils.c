@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/18 13:11:47 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 12:40:53 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 int	ft_isbuiltins(t_core *core)
 {
 	if (ft_strncmp("echo", (*core->tab), ft_strlen((*core->tab))) == 0)
-	{
-		// printf("%zu\n\n", ft_strlen((*core->tab)));
 		return (1);
-	}
 	else if (ft_strncmp("cd", (*core->tab), ft_strlen((*core->tab))) == 0)
 		return (1);
 	else if (ft_strncmp("pwd", (*core->tab), ft_strlen((*core->tab))) == 0)
@@ -42,7 +39,7 @@ void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust)
 	else if (ft_strncmp(cmd, "cd", ft_strlen(cmd)) == 0)
 		cd(core, crust);
 	else if (ft_strncmp(cmd, "pwd", ft_strlen(cmd)) == 0)
-		pwd(crust);
+		pwd(core);
 	else if (ft_strncmp(cmd, "export", ft_strlen(cmd)) == 0)
 		export(core, crust);
 	else if (ft_strncmp(cmd, "unset", ft_strlen(cmd)) == 0)

@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/18 16:08:37 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 12:40:23 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,13 +133,14 @@ void	cd(t_core *core, t_crust *crust);
 void	ft_echo(t_core *core);
 void	env(t_crust *crust);
 void	exit_shell(t_core *core);
-void	pwd(t_crust *crust);
+void	pwd(t_core *core);
 void	unset(t_core *core, t_crust *crust);
 char	**remove_env_var(char **env, int index);
 int		find_env_var(char **env, char *var);
 int		ft_isbuiltins(t_core *core);
 void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
 void	export(t_core *core, t_crust *crust);
+char	*check_tilde(t_core *core, t_crust *crust);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);

@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/18 16:02:22 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 12:41:12 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 	exit_code = 0;
 	core->child = fork();
 	if (core->child < 0)
-		return (perror("fork failed"));
-	else if (core->child == 0 && !core->error)
 	{
+		close_fd(core);
+		return (perror("fork failed"));
+	}
+	else if (core->child == 0 && !core->error && !core->exit_code)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		run_my_child(core, crust);
 		exit(1);
 	}
