@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/18 16:08:18 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 13:58:16 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,25 @@ void	not_used_pipe(t_crust *crust)
 		}
 		list = list->next;
 	}
+}
+
+void	path_in_cmd(t_crust *crust, t_core *core)
+{
+	int		i;
+
+	i = -1;
+	if (access(core->str, X_OK) == 0)
+	{
+		core->pathed = ft_strdup(core->str);
+		return ;
+	}
+	while (crust->path[++i])
+	{
+		core->pathed = ft_strjoin(crust->path[i], "/");
+		core->pathed = ft_strjoin(core->pathed, core->tab[0]);
+		if (access(core->pathed, X_OK) == 0)
+			return ;
+	}
+	write(2, "minishell: ", ft_strlen("minishell: "));
+	write(2, core->tab[0], ft_strlen(core->tab[0]));
 }

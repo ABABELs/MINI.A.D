@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 23:25:40 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 12:33:22 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 14:03:41 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	*check_tilde(t_core *core, t_crust *crust)
 		if (!ft_strncmp("~", core->tab[1], ft_strlen(core->tab[1]))
 			|| !ft_strncmp("~/", core->tab[1], ft_strlen(core->tab[1])))
 		{
-			path = crust->path;
+			path = crust->root_path;
 			core->tab[1]++;
 			if (!ft_strncmp("/", core->tab[1], ft_strlen(core->tab[1])))
 				core->tab[1]++;
@@ -85,6 +85,6 @@ char	*check_tilde(t_core *core, t_crust *crust)
 			path = ft_strjoin(path, core->tab[1]);
 		}
 	}
-	path = crust->path;
+	path = crust->root_path;
 	return (path);
 }

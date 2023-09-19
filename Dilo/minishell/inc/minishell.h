@@ -6,22 +6,38 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/19 12:40:23 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 14:52:49 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define CWD_SIZE 64
 
+# include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include <string.h>
+# include <sys/wait.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/ioctl.h>
+# include <signal.h>
+# include <curses.h>
+// # include <term.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <dirent.h>
 
+# define CWD_SIZE 64
+
+# define TRUE 1
+# define FALSE 0
+
+# define ERROR 1
+# define ALL_G 0
+
+int	g_mini_sig;
 
 //pour déclarer le type
 typedef enum s_type
@@ -41,6 +57,7 @@ typedef struct s_core
 {
 	char	*str;
 	char	**tab;
+	char	*pathed;
 	int		infile;
 	int		outfile;
 	int		fdp[2];
@@ -63,7 +80,8 @@ typedef struct s_crust
 	char		*for_print;
 	char		*input;
 	char		**env;
-	char		*path;
+	char		**path;
+	char		*root_path;
 	int			pipe;
 	t_mantle	*lst_cmd;
 }				t_crust;
@@ -116,6 +134,9 @@ int		ft_path_strlen(char *str, int b);
 //signal handler
 void	ft_sigint_handler(int si);
 void	ft_sigquit_handler(int si);
+void	ft_signal_in_fork(void);
+void	ft_signal(void);
+void	sig_handler(int sig, siginfo_t *info, void *context);
 
 //pipe
 void	pipe_or_not(t_crust *crust);
@@ -126,6 +147,7 @@ void	exec_my_pipe(t_core *core, t_crust *crust);
 void	close_fd(t_core *core);
 t_core	*find_prev(t_list *list);
 void	not_used_pipe(t_crust *crust);
+void	path_in_cmd(t_crust *crust, t_core *core);
 void	print_lst_parsing(t_list *lst_parsing);
 
 //builtins

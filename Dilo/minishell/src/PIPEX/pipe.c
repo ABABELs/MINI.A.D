@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/19 12:41:12 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 14:36:40 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 
 	exit_code = 0;
 	core->child = fork();
+	if (core->child > 0)
+		ft_signal_in_fork();
 	if (core->child < 0)
 	{
 		close_fd(core);
@@ -39,9 +41,10 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 		run_my_child(core, crust);
 		exit(1);
 	}
-	waitpid(core->child, &exit_code, 0);
 	if (core->child == 0)
 		exit(1);
+	waitpid(core->child, &exit_code, 0);
+	ft_signal();
 	core->exit_code = WEXITSTATUS(exit_code);
 }
 
@@ -77,6 +80,7 @@ void	run_my_child(t_core *cmd, t_crust *crust)
 		|| dup2(cmd->outfile, STDOUT_FILENO) == -1)
 		exit(1);
 	close_fd(cmd);
-	if (execve(crust->path, cmd->tab, crust->env) == -1)
+	path_in_cmd(crust, cmd);
+	if (execve(cmd->pathed, cmd->tab, crust->env) == -1)
 		return ;
 }

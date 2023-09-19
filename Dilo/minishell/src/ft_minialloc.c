@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/18 15:49:39 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 13:47:33 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_core	*ft_alloc_core(char **tab, int a)
 	}
 	core->infile = STDIN_FILENO;
 	core->outfile = STDOUT_FILENO;
+	core->pathed = NULL;
 	core->error = 0;
 	core->exit_code = 0;
 	core->type = NO;

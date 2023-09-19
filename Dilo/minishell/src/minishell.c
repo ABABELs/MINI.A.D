@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/18 15:17:36 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 13:40:24 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	remove_quotes(t_mantle *mantle)
 	}
 }
 
+//ajout **path
+//ajout *root_path
 static void	no_pipe(const char *str)
 {
 	t_crust		*crust;
@@ -50,6 +52,8 @@ static void	no_pipe(const char *str)
 		return ;
 	crust->pipe = ft_pipecount((char *)str);
 	crust->input = (char *)str;
+	crust->path = ft_split(getenv("PATH"), ':');
+	crust->root_path = getenv("HOME");
 	tab = ft_minisplit(crust->input);
 	if (!tab)
 		return ;
