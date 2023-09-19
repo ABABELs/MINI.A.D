@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/19 14:36:40 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 16:33:15 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 	if (core->child < 0)
 	{
 		close_fd(core);
-		return (perror("fork failed"));
+		return (perror("fork failed"), (void)1);
 	}
 	else if (core->child == 0 && !core->error && !core->exit_code)
 	{
@@ -54,7 +54,7 @@ void	lanch_pipe(t_crust *crust)
 	t_list	*list;
 
 	list = crust->lst_cmd->first;
-	join_the_pipe(crust);
+	// join_the_pipe(crust);
 	not_used_pipe(crust);
 	while (list)
 	{

@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 22:38:28 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/19 14:40:02 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 15:30:22 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void	ft_sigquit_handler(int si)
 	(void)si;
 }
 
+//added
 void	ft_signal_in_fork(void)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 }
 
+//added
 void	ft_signal(void)
 {
 	struct sigaction	s_sigaction;
@@ -49,6 +51,7 @@ void	ft_signal(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
+//added
 void	sig_handler(int sig, siginfo_t *info, void *context)
 {
 	(void)context;

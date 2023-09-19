@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 13:58:16 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 16:25:33 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_core	*find_prev(t_list *list)
 	content = NULL;
 	while (list)
 	{
-		content = (t_core *)list->content;
+		content = ((t_core *)list->content);
 		if (content->type == CMD)
 			break ;
 		list = list->prev;
@@ -45,13 +45,13 @@ void	join_the_pipe(t_crust *crust)
 	list = crust->lst_cmd->first;
 	while (list)
 	{
-		current = (t_core *)list->content;
+		current = ((t_core *)list->content);
 		if (current->type == PIPE)
 		{
 			if (list->prev)
 				prev = (find_prev(list));
 			if (list->next)
-				next = (t_core *)list->next->content;
+				next = ((t_core *)list->next->content);
 			if (pipe(((t_core *)list->content)->fdp) == -1)
 				return (perror("pipe failed"));
 			prev->outfile = current->fdp[1];
@@ -75,11 +75,11 @@ void	not_used_pipe(t_crust *crust)
 	{
 		if (!list->next && !list->prev)
 			break ;
-		current = (t_core *)list->content;
+		current = ((t_core *)list->content);
 		if (current->type == PIPE)
 		{
-			prev = (t_core *)list->prev->content;
-			next = (t_core *)list->next->content;
+			prev = ((t_core *)list->prev->content);
+			next = ((t_core *)list->next->content);
 			if ((prev->outfile == current->infile
 					&& current->outfile == next->infile))
 				prev->outfile = -1;

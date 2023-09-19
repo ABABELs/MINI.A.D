@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/19 13:40:24 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/19 15:58:48 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void	no_pipe(const char *str)
 	ft_type_set(crust->lst_cmd);
 	remove_quotes(crust->lst_cmd);
 	ft_joincmd(crust->lst_cmd);
+	join_the_pipe(crust);
 	// print_core(crust->lst_cmd);
 	pipe_or_not(crust);
 }
