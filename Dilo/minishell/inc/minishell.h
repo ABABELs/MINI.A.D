@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/19 14:52:49 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 11:49:03 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	print_lst_parsing(t_list *lst_parsing);
 //builtins
 void	cd(t_core *core, t_crust *crust);
 void	ft_echo(t_core *core);
-void	env(t_crust *crust);
+void	env(t_crust *crust, t_core *core);
 void	exit_shell(t_core *core);
 void	pwd(t_core *core);
 void	unset(t_core *core, t_crust *crust);
@@ -161,11 +161,18 @@ char	**remove_env_var(char **env, int index);
 int		find_env_var(char **env, char *var);
 int		ft_isbuiltins(t_core *core);
 void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
-void	export(t_core *core, t_crust *crust);
+void	export(t_crust *crust, t_core *core);
+int		ft_check_syntax(char *str);
+int		ft_export_char(char c, int i);
+int		ft_check_env(t_crust *crust, char *find_env);
+char	**array_join(char **array, char *line);
 char	*check_tilde(t_core *core, t_crust *crust);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);
 int		ft_print_msg(int a, char *str);
+
+//free
+void	ft_free_array(char **array);
 
 #endif

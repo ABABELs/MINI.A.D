@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/19 12:40:53 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 11:37:11 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust)
 	else if (ft_strncmp(cmd, "pwd", ft_strlen(cmd)) == 0)
 		pwd(core);
 	else if (ft_strncmp(cmd, "export", ft_strlen(cmd)) == 0)
-		export(core, crust);
+		export(crust, core);
 	else if (ft_strncmp(cmd, "unset", ft_strlen(cmd)) == 0)
 		unset(core, crust);
 	else if (ft_strncmp(cmd, "env", ft_strlen(cmd)) == 0)
-		env(crust);
+		env(crust, core);
 	else if (ft_strncmp(cmd, "exit", ft_strlen(cmd)) == 0)
 		exit_shell(core);
 }

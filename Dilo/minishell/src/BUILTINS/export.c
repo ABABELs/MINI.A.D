@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/19 18:02:37 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 11:45:51 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	export(t_crust *crust, t_core *core)
 		return (core->exit_code = 1, (void)0);
 	while (core->tab[++i])
 	{
-		is_syntax = check_syntax(core->tab[i]);
+		is_syntax = ft_check_syntax(core->tab[i]);
 		if (is_syntax < 0)
-			core->exite_code = 1;
+			core->exit_code = 1;
 		if (is_syntax > 0)
 		{
-			is_env = check_env(crust,
+			is_env = ft_check_env(crust,
 					ft_substr(core->tab[i], 0, is_syntax - 1));
 			if (is_env == 0)
 			{
@@ -41,7 +41,7 @@ void	export(t_crust *crust, t_core *core)
 	}
 }
 
-int	check_syntax(char *str)
+int	ft_check_syntax(char *str)
 {
 	int	i;
 
@@ -73,7 +73,7 @@ int	ft_export_char(char c, int i)
 	return (0);
 }
 
-int	check_env(t_crust *crust, char *find_env)
+int	ft_check_env(t_crust *crust, char *find_env)
 {
 	int	i;
 
@@ -88,43 +88,30 @@ int	check_env(t_crust *crust, char *find_env)
 	return (0);
 }
 
-// void	add_env_var(t_crust *crust, char *var)
-// {
-// 	int		len;
-// 	char	**new_env;
+char	**array_join(char **array, char *line)
+{
+	int		i;
+	char	**new_array;
+	int		len;
 
-// 	len = 0;
-// 	new_env = NULL;
-// 	while (crust->env[len])
-// 		len++;
-// 	new_env = realloc(crust->env, sizeof(char *) * (len + 2));
-// 	if (!new_env)
-// 	{
-// 		write(STDERR_FILENO, "Error: Memory allocation failed\\n",
-// 			strlen("Error: Memory allocation failed\\n"));
-// 		return ;
-// 	}
-// 	new_env[len] = strdup(var);
-// 	new_env[len + 1] = NULL;
-// 	crust->env = new_env;
-// }
-
-// void	export(t_crust *crust, t_core *core)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!core->tab[1])
-// 	{
-// 		while (crust->env[i])
-// 		{
-// 			write(STDOUT_FILENO, crust->env[i], strlen(crust->env[i]));
-// 			write(STDOUT_FILENO, "\\n", 1);
-// 			i++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		add_env_var(crust, crust->env[1]);
-// 	}
-// }
+	i = 0;
+	if (!array)
+		i = 0;
+	else
+		while (array[i])
+			i++;
+	len = i;
+	new_array = malloc(sizeof(char *) * (i + 2));
+	if (!new_array)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		new_array[i] = ft_strdup(array[i]);
+		i++;
+	}
+	new_array[i] = ft_strdup(line);
+	new_array[++i] = NULL;
+	ft_free_array(array);
+	return (new_array);
+}
