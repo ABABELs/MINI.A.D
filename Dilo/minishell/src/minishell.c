@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 23:48:44 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/17 20:59:56 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ static void	no_pipe(const char *str)
 		return ;
 	ft_alloc_mantle(tab, crust->lst_cmd);
 	ft_type_set(crust->lst_cmd);
+	if (ft_after_redir(crust->lst_cmd) == -1)
+		return ;
 	remove_quotes(crust->lst_cmd);
 	ft_joincmd(crust->lst_cmd);
 	print_core(crust->lst_cmd);
-	pipe_or_not(crust);
+	//pipe_or_not(crust);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer
@@ -98,5 +100,7 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
-//faire un gentenv peso
-//finir le split
+//supprimer les maillon vide
+//ouvrir les fd
+//mettre en place heredoc
+//faire un gentenv perso

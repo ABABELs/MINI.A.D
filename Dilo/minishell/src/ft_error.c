@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:58:42 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 23:33:11 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/17 21:03:37 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ static int	ft_after_pipe(t_mantle *mantle)
 			list = list->next;
 		a++;
 	}
+	core = (t_core *)list->content;
+	if (core->type == PIPE && !list->next)
+		return (ft_print_msg(1, "newline"));
 	return (0);
 }
 
