@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/19 13:47:33 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 13:52:37 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static t_core	*ft_alloc_core(char **tab, int a)
 	core->error = 0;
 	core->exit_code = 0;
 	core->type = NO;
+	core->to_delete = 0;
 	if (!core->str)
 		return (core);
 	return (core);

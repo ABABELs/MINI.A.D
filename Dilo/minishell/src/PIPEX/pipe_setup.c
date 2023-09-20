@@ -6,19 +6,11 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 17:18:03 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 14:39:24 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	close_fd(t_core *core)
-{
-	if (core->infile > 0)
-		close(core->infile);
-	if (core->outfile > 2)
-		close(core->outfile);
-}
 
 t_core	*find_prev(t_list *list)
 {
