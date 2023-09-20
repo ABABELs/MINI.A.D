@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 22:38:28 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/07/31 20:36:44 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/19 15:30:22 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_mini_sig;
 
 /*
 	redirige le signal sigint pour qu'elle 
@@ -21,7 +23,7 @@ void	ft_sigint_handler(int si)
 	(void)si;
 	ft_printf("\n");
 	rl_on_new_line();
-	rl_replace_line("", 0);
+	// rl_replace_line("", 0);
 	rl_redisplay();
 }
 
@@ -29,4 +31,37 @@ void	ft_sigint_handler(int si)
 void	ft_sigquit_handler(int si)
 {
 	(void)si;
+}
+
+//added
+void	ft_signal_in_fork(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+//added
+void	ft_signal(void)
+{
+	struct sigaction	s_sigaction;
+
+	s_sigaction.sa_flags = 0;
+	s_sigaction.sa_sigaction = sig_handler;
+	sigaction(SIGINT, &s_sigaction, 0);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+//added
+void	sig_handler(int sig, siginfo_t *info, void *context)
+{
+	(void)context;
+	(void)info;
+	if (sig == SIGINT)
+	{
+		g_mini_sig = 130;
+		ft_printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }

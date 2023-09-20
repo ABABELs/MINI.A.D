@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minialloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 11:19:41 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/19 13:47:33 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ static t_core	*ft_alloc_core(char **tab, int a)
 			return (NULL);
 		core->str = ft_print_path(core->str, path);
 	}
+	core->infile = STDIN_FILENO;
+	core->outfile = STDOUT_FILENO;
+	core->pathed = NULL;
+	core->error = 0;
+	core->exit_code = 0;
 	core->type = NO;
 	if (!core->str)
 		return (core);

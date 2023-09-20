@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/17 20:59:56 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/20 12:00:56 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static void	remove_quotes(t_mantle *mantle)
 	}
 }
 
-//gère l'input si il n'y a pas de pipe
+//ajout **path
+//ajout *root_path
 static void	no_pipe(const char *str)
 {
 	t_crust		*crust;
@@ -51,6 +52,8 @@ static void	no_pipe(const char *str)
 		return ;
 	crust->pipe = ft_pipecount((char *)str);
 	crust->input = (char *)str;
+	crust->path = ft_split(getenv("PATH"), ':');
+	crust->root_path = getenv("HOME");
 	tab = ft_minisplit(crust->input);
 	if (!tab)
 		return ;
@@ -60,8 +63,9 @@ static void	no_pipe(const char *str)
 		return ;
 	remove_quotes(crust->lst_cmd);
 	ft_joincmd(crust->lst_cmd);
-	print_core(crust->lst_cmd);
-	//pipe_or_not(crust);
+	join_the_pipe(crust);
+	// print_core(crust->lst_cmd);
+	pipe_or_not(crust);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

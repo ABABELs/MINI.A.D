@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arthurabel <arthurabel@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/14 13:46:28 by arthurabel       ###   ########.fr       */
+/*   Updated: 2023/09/19 16:33:15 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,38 @@
 
 void	pipe_or_not(t_crust *crust)
 {
-	//verifier si on a bien la bonne qunatiter
-	if ((crust->pipe) > 0)
+	if ((crust->pipe) >= 0)
 		lanch_pipe(crust);
 	else
 		return ;
+	print_lst_parsing(crust->lst_cmd->first);
+}
+
+void	exec_my_pipe(t_core *core, t_crust *crust)
+{
+	int	exit_code;
+
+	exit_code = 0;
+	core->child = fork();
+	if (core->child > 0)
+		ft_signal_in_fork();
+	if (core->child < 0)
+	{
+		close_fd(core);
+		return (perror("fork failed"), (void)1);
+	}
+	else if (core->child == 0 && !core->error && !core->exit_code)
+	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+		run_my_child(core, crust);
+		exit(1);
+	}
+	if (core->child == 0)
+		exit(1);
+	waitpid(core->child, &exit_code, 0);
+	ft_signal();
+	core->exit_code = WEXITSTATUS(exit_code);
 }
 
 void	lanch_pipe(t_crust *crust)
@@ -27,68 +54,33 @@ void	lanch_pipe(t_crust *crust)
 	t_list	*list;
 
 	list = crust->lst_cmd->first;
-	join_the_pipe(crust);
+	// join_the_pipe(crust);
+	not_used_pipe(crust);
 	while (list)
 	{
 		content = (t_core *)list->content;
 		if (content->type == CMD)
 		{
 			if (ft_isbuiltins(content) == 1)
-				exec_my_builtins(content->tab[0], content, crust);
-			content->child = fork();
-			if (content->child < 0)
-				return (perror("fork failed"));
-			else if (content->child == 0)
-				run_my_child(content, crust, list);
-			if (content->infile > 0)
-				close(content->infile);
-			if (content->outfile > 2)
-				close(content->outfile);
-			waitpid(content->child, 0, 0);
+			{
+				if (!content->error)
+					exec_my_builtins(content->tab[0], content, crust);
+			}
+			else
+				exec_my_pipe(content, crust);
+			close_fd(content);
 		}
 			list = list->next;
 	}
 }
 
-void	join_the_pipe(t_crust *crust)
+void	run_my_child(t_core *cmd, t_crust *crust)
 {
-	t_list	*list;
-	t_core	*prev;
-	t_core	*next;
-	t_core	*current;
-
-	list = crust->lst_cmd->first;
-	while (list)
-	{
-		current = (t_core *)list->content;
-		if (current->type == PIPE)
-		{
-			if (list->prev)
-				prev = (t_core *)list->prev->content;
-			if (list->next)
-				next = (t_core *)list->next->content;
-			if (pipe(current->fdp) == -1)
-				return (perror("pipe failed"));
-			if (prev->error != 1 && prev->outfile == 1 && next->infile == 0)
-				prev->outfile = current->fdp[1];
-			if (next->error != 1 && next->infile == 0 && prev->outfile == 1)
-				next->infile = current->fdp[0];
-		}
-		list = list->next;
-	}
-}
-
-void	run_my_child(t_core *cmd, t_crust *crust, t_list *list)
-{
-	(void)list;
 	if (dup2(cmd->infile, STDIN_FILENO) == -1
 		|| dup2(cmd->outfile, STDOUT_FILENO) == -1)
-		return (perror("dup2 failed"));
-	if (cmd->infile > 0)
-		close(cmd->infile);
-	if (cmd->outfile > 2)
-		close(cmd->outfile);
-	// get_path(crust, cmd);
-	if (execve(crust->path, cmd->tab, crust->env) == -1)//penser a ajouter l env a la struct
+		exit(1);
+	close_fd(cmd);
+	path_in_cmd(crust, cmd);
+	if (execve(cmd->pathed, cmd->tab, crust->env) == -1)
 		return ;
 }
