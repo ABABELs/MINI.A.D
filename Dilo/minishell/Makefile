@@ -6,7 +6,7 @@
 #    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/18 15:21:33 by aabel            ###   ########.fr        #
+#    Updated: 2023/09/20 11:48:27 by aabel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
 			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c \
 			src/ft_error.c src/ft_print_error_msg.c \
+			src/free/freeing.c \
 			
 OBJECTS = $(SOURCES:.c=.o)
 
