@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/20 11:49:03 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 12:08:20 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int		ft_check_syntax(char *str);
 int		ft_export_char(char c, int i);
 int		ft_check_env(t_crust *crust, char *find_env);
 char	**array_join(char **array, char *line);
-char	*check_tilde(t_core *core, t_crust *crust);
+char	*check_tilde(t_core *core, t_crust *crust, char *pwd, char *path);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);

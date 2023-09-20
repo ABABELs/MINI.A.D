@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/19 16:33:15 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 12:51:40 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	lanch_pipe(t_crust *crust)
 	while (list)
 	{
 		content = (t_core *)list->content;
-		if (content->type == CMD)
+		if (content->type == CMD && content->tab)
 		{
 			if (ft_isbuiltins(content) == 1)
 			{
