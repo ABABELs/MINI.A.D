@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/09/20 14:01:44 by dilovancand      ###   ########.fr       */
+=======
+/*   Updated: 2023/09/20 14:27:40 by aabel            ###   ########.fr       */
+>>>>>>> 7fd3c54d5128c3f41ced8c157fa87a0b2b686dfc
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +67,7 @@ typedef struct s_core
 	int		fdp[2];
 	pid_t	child;
 	int		error;
+	int		to_delete;
 	int		exit_code;
 	t_type	type;
 }			t_core;
@@ -149,6 +154,9 @@ t_core	*find_prev(t_list *list);
 void	not_used_pipe(t_crust *crust);
 void	path_in_cmd(t_crust *crust, t_core *core);
 void	print_lst_parsing(t_list *lst_parsing);
+void	remove_pipe(t_crust *crust);
+void	wait_all_process(t_crust *crust);
+void	close_all_fd(t_crust *crust);
 
 //builtins
 void	cd(t_core *core, t_crust *crust);
@@ -177,5 +185,8 @@ int		ft_open_fd(t_mantle *mantle);
 
 //free
 void	ft_free_array(char **array);
+void	node_to_del(t_mantle *lst_cmd);
+void	remove_node(t_list **head, t_list *node_to_remove);
+int		is_node_to_del(t_list *lst);
 
 #endif

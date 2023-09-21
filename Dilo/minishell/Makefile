@@ -6,7 +6,11 @@
 #    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/09/20 14:02:08 by dilovancand      ###   ########.fr        #
+=======
+#    Updated: 2023/09/20 14:01:06 by aabel            ###   ########.fr        #
+>>>>>>> 7fd3c54d5128c3f41ced8c157fa87a0b2b686dfc
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +22,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/ft_prepforexec.c \
 			src/BUILTINS/cd.c src/BUILTINS/echo.c src/BUILTINS/env.c src/BUILTINS/exit.c src/BUILTINS/export.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
-			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c \
+			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c src/PIPEX/pipe_utils.c \
 			src/ft_error.c src/ft_print_error_msg.c \
 			src/free/freeing.c src/ft_open.c
 			
