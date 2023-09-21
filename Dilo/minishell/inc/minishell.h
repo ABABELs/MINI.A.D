@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/20 12:08:20 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/20 14:01:44 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,9 @@ char	*check_tilde(t_core *core, t_crust *crust, char *pwd, char *path);
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);
 int		ft_print_msg(int a, char *str);
+
+//open
+int		ft_open_fd(t_mantle *mantle);
 
 //free
 void	ft_free_array(char **array);
