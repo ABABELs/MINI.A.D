@@ -6,11 +6,7 @@
 #    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/09/20 14:02:08 by dilovancand      ###   ########.fr        #
-=======
-#    Updated: 2023/09/20 14:01:06 by aabel            ###   ########.fr        #
->>>>>>> 7fd3c54d5128c3f41ced8c157fa87a0b2b686dfc
+#    Updated: 2023/09/21 16:20:28 by dilovancand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

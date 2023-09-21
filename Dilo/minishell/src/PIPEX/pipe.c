@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/20 14:40:51 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/21 17:57:12 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	wait_all_process(t_crust *crust)
 	{
 		exit_code = 0;
 		waitpid(core->child, &exit_code, 0);
+		ft_printf("1");
 		if (core->exit_code == 0)
 			core->exit_code = WEXITSTATUS(exit_code);
 		list = list->prev;
@@ -84,16 +85,16 @@ void	lanch_pipe(t_crust *crust)
 {
 	t_core	*content;
 	t_list	*list;
-	int		exit_code;
+//	int		exit_code;
 
-	exit_code = 0;
+	//exit_code = 0;
 	list = crust->lst_cmd->first;
 	// not_used_pipe(crust);
 	remove_pipe(crust);
 	while (list)
 	{
 		content = (t_core *)list->content;
-		if (content->type == CMD)
+		if (content->type == CMD && content->tab)
 		{
 			if (ft_isbuiltins(content) == 1)
 			{

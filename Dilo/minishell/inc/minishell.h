@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/09/20 14:01:44 by dilovancand      ###   ########.fr       */
-=======
-/*   Updated: 2023/09/20 14:27:40 by aabel            ###   ########.fr       */
->>>>>>> 7fd3c54d5128c3f41ced8c157fa87a0b2b686dfc
+/*   Updated: 2023/09/21 16:20:23 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
