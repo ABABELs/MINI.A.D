@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
+#    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/20 14:01:06 by aabel            ###   ########.fr        #
+#    Updated: 2023/09/21 16:20:28 by dilovancand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
 			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c src/PIPEX/pipe_utils.c \
 			src/ft_error.c src/ft_print_error_msg.c \
-			src/free/freeing.c \
+			src/free/freeing.c src/ft_open.c
 			
 OBJECTS = $(SOURCES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:15:18 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/15 14:07:32 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/21 17:43:22 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_print_msg(int a, char *str)
 {
 	if (a == 1)
-		ft_printf("minishell: syntax error near unexpected token '%s'\n",
+		ft_printf("minishell: syntax error near unexpected token `%s'\n",
 			str);
 	return (-1);
 }
