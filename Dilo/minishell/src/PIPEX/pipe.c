@@ -6,11 +6,13 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/20 14:40:51 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 15:16:59 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern	int	g_mini_sig;
 
 void	pipe_or_not(t_crust *crust)
 {

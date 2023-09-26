@@ -6,13 +6,11 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:42:18 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/20 14:39:05 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/20 15:17:22 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-extern	int	g_exit_code;
 
 void	remove_pipe(t_crust *crust)
 {
