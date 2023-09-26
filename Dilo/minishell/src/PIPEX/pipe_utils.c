@@ -6,11 +6,18 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:42:18 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/20 15:17:22 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 12:04:56 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_message(char *msg_0, char *token, char *msg_1)
+{
+	write(2, msg_0, ft_strlen(msg_0));
+	write(2, token, ft_strlen(token));
+	write(2, msg_1, ft_strlen(msg_1));
+}
 
 void	remove_pipe(t_crust *crust)
 {

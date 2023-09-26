@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/21 17:47:28 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/26 14:57:50 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust)
 	else if (ft_strncmp(cmd, "env", ft_strlen(cmd)) == 0)
 		env(crust, core);
 	else if (ft_strncmp(cmd, "exit", ft_strlen(cmd)) == 0)
-		exit_shell(core);
+		ft_exit(core);
 }

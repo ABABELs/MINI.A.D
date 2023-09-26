@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/21 16:20:23 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/26 14:57:29 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,21 +148,31 @@ void	exec_my_pipe(t_core *core, t_crust *crust);
 void	close_fd(t_core *core);
 t_core	*find_prev(t_list *list);
 void	not_used_pipe(t_crust *crust);
-void	path_in_cmd(t_crust *crust, t_core *core);
+int		path_in_cmd(t_crust *crust, t_core *core);
 void	print_lst_parsing(t_list *lst_parsing);
 void	remove_pipe(t_crust *crust);
 void	wait_all_process(t_crust *crust);
 void	close_all_fd(t_crust *crust);
+void	ft_message(char *msg_0, char *token, char *msg_1);
+int		ft_slash(char *str);
+
 
 //builtins
 void	cd(t_core *core, t_crust *crust);
+int		arg_good(t_core *core, t_crust *crust);
+void	set_pwds(t_crust *crust, char *oldpwd);
 void	ft_echo(t_core *core);
 void	env(t_crust *crust, t_core *core);
-void	exit_shell(t_core *core);
+void	ft_exit(t_core *core);
+void	ft_exit_no_arg(t_core *core);
+void	ft_exit_args(t_core *core);
+void	ft_exit_arg(void);
+int		is_numeric_arg(char *str);
 void	pwd(t_core *core);
 void	unset(t_core *core, t_crust *crust);
 char	**remove_env_var(char **env, int index);
-int		find_env_var(char **env, char *var);
+int		find_env_var(t_crust *crust, char *find_env);
+int		ft_arraylen(char **array);
 int		ft_isbuiltins(t_core *core);
 void	exec_my_builtins(char *cmd, t_core *core, t_crust *crust);
 void	export(t_crust *crust, t_core *core);
@@ -184,5 +194,8 @@ void	ft_free_array(char **array);
 void	node_to_del(t_mantle *lst_cmd);
 void	remove_node(t_list **head, t_list *node_to_remove);
 int		is_node_to_del(t_list *lst);
+
+//env
+char	*ft_getenv(t_crust *crust, char *find_env);
 
 #endif

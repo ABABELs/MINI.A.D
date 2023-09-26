@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/26 11:42:59 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 12:48:02 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	wait_all_process(t_crust *crust)
 	while (list && !ft_isbuiltins(core))
 	{
 		exit_code = 0;
-		waitpid(core->child, &exit_code, 0);
-		ft_printf("1");
+		if (!core->error)
+			waitpid(core->child, &exit_code, 0);
 		if (core->exit_code == 0)
 			core->exit_code = WEXITSTATUS(exit_code);
 		list = list->prev;
@@ -46,16 +46,16 @@ void	wait_all_process(t_crust *crust)
 	}
 }
 
-void	run_my_child(t_core *cmd, t_crust *crust)
-{
-	if (dup2(cmd->infile, STDIN_FILENO) == -1
-		|| dup2(cmd->outfile, STDOUT_FILENO) == -1)
-		exit(1);
-	close_fd(cmd);
-	path_in_cmd(crust, cmd);
-	if (execve(cmd->pathed, cmd->tab, crust->env) == -1)
-		return ;
-}
+// void	run_my_child(t_core *cmd, t_crust *crust)
+// {
+// 	if (dup2(cmd->infile, STDIN_FILENO) == -1
+// 		|| dup2(cmd->outfile, STDOUT_FILENO) == -1)
+// 		exit(1);
+// 	close_fd(cmd);
+// 	path_in_cmd(crust, cmd);
+// 	if (execve(cmd->pathed, cmd->tab, crust->env) == -1)
+// 		return ;
+// }
 
 void	exec_my_pipe(t_core *core, t_crust *crust)
 {
@@ -64,39 +64,40 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 		ft_signal_in_fork();
 	if (core->child < 0)
 	{
-		close_all_fd(crust);
-		return (perror("fork failed"), (void)1);
+		return (close_all_fd(crust), perror("Fork failed"), (void)1);
 	}
 	else if (core->child == 0 && !core->error && !core->exit_code)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
+		if (core->error || core->exit_code)
+			exit(1);
 		if (dup2(core->infile, STDIN_FILENO) == -1
 			|| dup2(core->outfile, STDOUT_FILENO) == -1)
 			exit(1);
 		close_all_fd(crust);
-		path_in_cmd(crust, core);
-		if (execve(core->pathed, core->tab, crust->env) == -1)
+		if (path_in_cmd(crust, core) == 0)
+		{
+			if (execve(core->pathed, core->tab, crust->env) == -1)
+				exit(127);
+		}
+		else
 			exit(127);
-	}
-	if (core->child == 0)
 		exit(1);
+	}
 }
 
 void	lanch_pipe(t_crust *crust)
 {
 	t_core	*content;
 	t_list	*list;
-//	int		exit_code;
 
-	//exit_code = 0;
 	list = crust->lst_cmd->first;
-	// not_used_pipe(crust);
 	remove_pipe(crust);
 	while (list)
 	{
 		content = (t_core *)list->content;
-		if (content->type == CMD && content->tab)
+		if (content->type == CMD)
 		{
 			if (ft_isbuiltins(content) == 1)
 			{

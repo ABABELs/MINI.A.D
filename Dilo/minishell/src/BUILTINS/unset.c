@@ -6,73 +6,71 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 17:08:53 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 14:38:04 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	find_env_var(char **env, char *var)
+int	find_env_var(t_crust *crust, char *find_env)
+{
+	int		i;
+	char	**env;
+
+	i = 0;
+	env = crust->env;
+	while (crust->env[i])
+	{
+		if (!ft_strncmp(find_env, crust->env[i], strlen(find_env)))
+			return (i);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_arraylen(char **array)
 {
 	int	i;
 
 	i = 0;
-	while (env[i])
-	{
-		if (strncmp(env[i], var, strlen(var)) == 0
-			&& env[i][strlen(var)] == '=')
-			return (i);
+	while (array[i])
 		i++;
-	}
-	return (-1);
+	return (i);
 }
 
 char	**remove_env_var(char **env, int index)
 {
-	int		env_len;
 	int		i;
 	int		j;
-	char	**new_env;
+	char	**array;
 
-	env_len = 0;
 	i = 0;
-	j = 0;
-	while (env[env_len])
-		env_len++;
-	new_env = malloc(sizeof(char *) * env_len);
-	while (i < env_len)
+	j = -1;
+	array = malloc(sizeof(char *) * ft_arraylen(env));
+	while (env[i])
 	{
 		if (i != index)
-		{
-			new_env[j] = env[i];
-		j++;
-		}
-		else
-			free(env[i]);
+			array[++j] = env[i];
 		i++;
 	}
-	free(env);
-	return (new_env);
+	array[j + 1] = NULL;
+	return (array);
 }
 
 void	unset(t_core *core, t_crust *crust)
 {
-	int	arg;
-	int	index;
+	int		i;
+	int		index;
+	char	*env;
 
+	i = 0;
 	index = 0;
-	arg = 1;
-	if (!core->tab[1])
+	env = NULL;
+	while (core->tab[++i])
 	{
-		printf("unset: not enough arguments\n");
-		return ;
-	}
-
-	while (core->tab[arg])
-	{
-		index = find_env_var(crust->env, core->tab[arg]);
-		if (index != -1)
+		index = find_env_var(crust, core->tab[i]);
+		env = ft_getenv(crust, ft_strdup(core->tab[i]));
+		if (env != NULL)
 			crust->env = remove_env_var(crust->env, index);
-		arg++;
 	}
 }

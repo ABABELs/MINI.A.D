@@ -6,11 +6,52 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 23:25:40 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/20 12:01:05 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 14:21:31 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_mini_sig;
+
+void	set_pwds(t_crust *crust, char *oldpwd)
+{
+	int	i;
+
+	i = -1;
+	while (crust->env[++i])
+	{
+		if (!strncmp(crust->env[i], ft_strdup("OLDPWD"), 6))
+		{
+			free(crust->env[i]);
+			crust->env[i] = ft_strjoin(ft_strdup("OLDPWD="), oldpwd);
+		}
+		if (!strncmp(crust->env[i], ft_strdup("PWD"), 3))
+		{
+			free(crust->env[i]);
+			crust->env[i] = ft_strjoin(ft_strdup("PWD="), getcwd(NULL, 0));
+		}
+	}
+}
+
+
+int	arg_good(t_core *core, t_crust *crust)
+{
+	char	*oldpwd;
+
+	oldpwd = ft_getenv(crust, ft_strdup("PWD"));
+	if (core->tab && core->tab[1])
+	{
+		if (chdir(core->tab[1]) != 1)
+		{
+			set_pwds(crust, oldpwd);
+			return (1);
+		}
+		else
+			return (0);
+	}
+	return (0);
+}
 
 void	cd(t_core *core, t_crust *crust)
 {
@@ -19,12 +60,15 @@ void	cd(t_core *core, t_crust *crust)
 
 	pwd = NULL;
 	path = NULL;
-	if (chdir(core->tab[1]) != -1)
+	if (arg_good(core, crust))
 		return ;
 	if (core->tab[1] != NULL)
 		path = check_tilde(core, crust, pwd, path);
-	else
+	else if (crust->root_path)
 		path = crust->root_path;
+	else
+		return (ft_message("minishell: ", core->str,
+				": HOME not set\n"), (void)0);
 	if (opendir(path) == NULL)
 	{
 		printf("minishell: cd: %s", core->tab[1]);
@@ -32,7 +76,10 @@ void	cd(t_core *core, t_crust *crust)
 		core->exit_code = 1;
 	}
 	else
+	{
 		chdir(path);
+		set_pwds(crust, ft_getenv(crust, ft_strdup("PWD")));
+	}
 }
 
 char	*check_tilde(t_core *core, t_crust *crust, char*pwd, char *path)

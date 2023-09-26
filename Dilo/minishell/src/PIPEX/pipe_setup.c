@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/20 14:39:24 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 12:51:41 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,51 +55,72 @@ void	join_the_pipe(t_crust *crust)
 	}
 }
 
-void	not_used_pipe(t_crust *crust)
-{
-	t_list	*list;
-	t_core	*current;
-	t_core	*prev;
-	t_core	*next;
+// void	not_used_pipe(t_crust *crust)
+// {
+// 	t_list	*list;
+// 	t_core	*current;
+// 	t_core	*prev;
+// 	t_core	*next;
 
-	list = crust->lst_cmd->first;
-	while (list)
+// 	list = crust->lst_cmd->first;
+// 	while (list)
+// 	{
+// 		if (!list->next && !list->prev)
+// 			break ;
+// 		current = ((t_core *)list->content);
+// 		if (current->type == PIPE)
+// 		{
+// 			prev = ((t_core *)list->prev->content);
+// 			next = ((t_core *)list->next->content);
+// 			if ((prev->outfile == current->infile
+// 					&& current->outfile != next->infile))
+// 				prev->outfile = -1;
+// 			if ((prev->outfile != current->infile
+// 					&& current->outfile == next->infile))
+// 				next->infile = -1;
+// 		}
+// 		list = list->next;
+// 	}
+// }
+
+int	ft_slash(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
 	{
-		if (!list->next && !list->prev)
-			break ;
-		current = ((t_core *)list->content);
-		if (current->type == PIPE)
-		{
-			prev = ((t_core *)list->prev->content);
-			next = ((t_core *)list->next->content);
-			if ((prev->outfile == current->infile
-					&& current->outfile != next->infile))
-				prev->outfile = -1;
-			if ((prev->outfile != current->infile
-					&& current->outfile == next->infile))
-				next->infile = -1;
-		}
-		list = list->next;
+		if (str[i] == '/')
+			return (1);
 	}
+	return (0);
 }
 
-void	path_in_cmd(t_crust *crust, t_core *core)
+int	path_in_cmd(t_crust *crust, t_core *core)
 {
 	int		i;
 
 	i = -1;
-	if (access(core->str, X_OK) == 0)
+	if (ft_slash(core->str) && opendir(core->str))
+		return (ft_message("minishell: ", core->str,
+				": is a directory\n"), exit(126), 1);
+	if (ft_slash(core->str) && access(core->str, X_OK) != 0)
+		return (ft_message("minishell: ", core->str,
+				": No such file or directory\n"), exit(127), 1);
+	if (ft_slash(core->str) && access(core->str, X_OK) != 0)
+		return (ft_message("minishell: ", core->str,
+				": Permission denied\n"), exit(126), 1);
+	while (crust->path && crust->path[++i])
 	{
-		core->pathed = ft_strdup(core->str);
-		return ;
-	}
-	while (crust->path[++i])
-	{
-		core->pathed = ft_strjoin(crust->path[i], "/");
+		core->pathed = ft_strjoin(ft_strdup(crust->path[i]), "/");
 		core->pathed = ft_strjoin(core->pathed, core->tab[0]);
-		if (access(core->pathed, X_OK) == 0)
-			return ;
+		if (access(core->pathed, F_OK | X_OK) == 0)
+			return (0);
+		else
+			free(core->pathed);
 	}
-	write(2, "minishell: ", ft_strlen("minishell: "));
-	write(2, core->tab[0], ft_strlen(core->tab[0]));
+	if (access(core->str, F_OK | X_OK) == 0 && !opendir(core->str))
+		return (core->pathed = ft_strdup(core->str), 0);
+	ft_message("minishell: ", core->tab[0], ": command not found\n");
+	return (1);
 }
