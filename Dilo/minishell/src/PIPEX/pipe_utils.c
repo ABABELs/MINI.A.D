@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:42:18 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/26 12:04:56 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:05:53 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,20 @@ void	close_all_fd(t_crust *crust)
 			close(core->outfile);
 		list = list->next;
 	}
+}
+
+int	ft_count_cmds(t_crust *crust)
+{
+	t_list	*list;
+	int		r;
+
+	r = 0;
+	list = crust->lst_cmd->first;
+	while (list)
+	{
+		if (((t_core *)list->content)->type == CMD)
+			r++;
+		list = list->next;
+	}
+	return (r);
 }

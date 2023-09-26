@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/26 12:48:02 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:06:57 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern	int	g_mini_sig;
 
 void	pipe_or_not(t_crust *crust)
 {
-	if ((crust->pipe) >= 0)
+	if (ft_count_cmds(crust) > 0)
 		lanch_pipe(crust);
 	else
 		return ;
@@ -45,17 +45,6 @@ void	wait_all_process(t_crust *crust)
 			core = (t_core *)list->content;
 	}
 }
-
-// void	run_my_child(t_core *cmd, t_crust *crust)
-// {
-// 	if (dup2(cmd->infile, STDIN_FILENO) == -1
-// 		|| dup2(cmd->outfile, STDOUT_FILENO) == -1)
-// 		exit(1);
-// 	close_fd(cmd);
-// 	path_in_cmd(crust, cmd);
-// 	if (execve(cmd->pathed, cmd->tab, crust->env) == -1)
-// 		return ;
-// }
 
 void	exec_my_pipe(t_core *core, t_crust *crust)
 {

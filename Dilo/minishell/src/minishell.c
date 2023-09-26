@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/26 13:04:05 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:52:01 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,23 @@ static void	remove_quotes(t_mantle *mantle)
 }
 
 
-static void	no_pipe(const char *str)
+static void	no_pipe(const char *str, char **env)
 {
 	t_crust		*crust;
 	char		**tab;
+	char		*get_env;
 
 	crust = malloc(sizeof(t_crust));
 	crust->lst_cmd = malloc(sizeof(t_mantle));
 	if (!crust || !crust->lst_cmd)
 		return ;
-	crust->pipe = ft_pipecount((char *)str);
 	crust->input = (char *)str;
-	crust->path = ft_split(getenv("PATH"), ':');
-	crust->root_path = getenv("HOME");
+	crust->env = array_dup(env);
+	get_env = ft_getenv(crust, ft_strdup("PATH"));
+	crust->path = ft_split(get_env, ':');
+	free(get_env);
 	tab = ft_minisplit(crust->input);
+	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
 	if (!tab || !tab[0])
 		return ;
 	(ft_alloc_mantle(tab, crust->lst_cmd), ft_type_set(crust->lst_cmd));
@@ -66,7 +69,7 @@ static void	no_pipe(const char *str)
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer
-void	ft_minishell(void)
+void	ft_minishell(char **env)
 {
 	char	*str;
 
@@ -83,7 +86,7 @@ void	ft_minishell(void)
 			if (is_quote_close(str) == 1)
 				printf("Quote is not closed\n");
 			else
-				no_pipe(str);
+				no_pipe(str, env);
 			add_history(str);
 		}
 	}
@@ -97,7 +100,7 @@ int	main(int argc, char **argv, char **env)
 	(void)env;
 	signal(SIGINT, ft_sigint_handler);
 	signal(SIGQUIT, ft_sigquit_handler);
-	ft_minishell();
+	ft_minishell(env);
 	return (0);
 }
 

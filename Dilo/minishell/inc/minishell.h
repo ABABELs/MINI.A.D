@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/26 14:57:29 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:52:09 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ typedef struct s_crust
 	char		**env;
 	char		**path;
 	char		*root_path;
-	int			pipe;
 	t_mantle	*lst_cmd;
 }				t_crust;
 
@@ -98,6 +97,9 @@ typedef struct s_pathport
 	int		f;
 	char	c;
 }			t_pathport;
+
+//lanch
+void	ft_minishell(char **env);
 
 //cmd cleaner
 void	ft_joincmd(t_mantle *mantle);
@@ -122,6 +124,7 @@ void	print_core(t_mantle *mantle);
 int		ft_ispth(char *str);
 int		ft_isquote(char *str);
 int		ft_after_redir(t_mantle *mantle);
+char	**array_dup(char **array);
 
 //redirection
 int		ft_strcmp(const char *s1, const char *s2);
@@ -155,6 +158,7 @@ void	wait_all_process(t_crust *crust);
 void	close_all_fd(t_crust *crust);
 void	ft_message(char *msg_0, char *token, char *msg_1);
 int		ft_slash(char *str);
+int		ft_count_cmds(t_crust *crust);
 
 
 //builtins
