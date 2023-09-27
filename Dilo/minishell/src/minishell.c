@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/26 16:52:01 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/27 15:58:37 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	no_pipe(const char *str, char **env)
 
 	crust = malloc(sizeof(t_crust));
 	crust->lst_cmd = malloc(sizeof(t_mantle));
+	crust->lst_cmd->first = NULL;
 	if (!crust || !crust->lst_cmd)
 		return ;
 	crust->input = (char *)str;

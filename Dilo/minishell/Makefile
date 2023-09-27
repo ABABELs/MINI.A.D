@@ -6,7 +6,7 @@
 #    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/26 16:22:06 by aabel            ###   ########.fr        #
+#    Updated: 2023/09/27 15:32:40 by aabel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 LIBFT_LIB = inc/libft/libft.a
 INC_DIR = inc/
