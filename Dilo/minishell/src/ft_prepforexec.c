@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepforexec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/13 14:05:17 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/09/29 16:37:08 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static char	**ft_cmd_tab(t_list *list, int tab_nb)
 			break ;
 		temp = temp->next;
 	}
+	tab[a] = NULL;
 	return (tab);
 }
 

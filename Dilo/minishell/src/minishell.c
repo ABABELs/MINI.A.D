@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/27 15:58:37 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:17:19 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	remove_quotes(t_mantle *mantle)
 	}
 }
 
-
 static void	no_pipe(const char *str, char **env)
 {
 	t_crust		*crust;
@@ -66,7 +65,6 @@ static void	no_pipe(const char *str, char **env)
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
 	(ft_open_fd(crust->lst_cmd), join_the_pipe(crust));
 	pipe_or_not(crust);
-	//print_core(crust->lst_cmd);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

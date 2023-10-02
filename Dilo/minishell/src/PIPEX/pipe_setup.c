@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/26 12:51:41 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:00:38 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	path_in_cmd(t_crust *crust, t_core *core)
 	if (ft_slash(core->str) && opendir(core->str))
 		return (ft_message("minishell: ", core->str,
 				": is a directory\n"), exit(126), 1);
-	if (ft_slash(core->str) && access(core->str, X_OK) != 0)
+	if (ft_slash(core->str) && access(core->str, F_OK) != 0)
 		return (ft_message("minishell: ", core->str,
 				": No such file or directory\n"), exit(127), 1);
 	if (ft_slash(core->str) && access(core->str, X_OK) != 0)
