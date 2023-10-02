@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/29 16:37:08 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/02 16:54:12 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	ft_countcmd(t_list *temp)
 	{
 		core = (t_core *)list->content;
 		if (core->type == CMD)
+			a++;
+		else if (core->type == ARG)
 			a++;
 		else
 			break ;
@@ -48,6 +50,11 @@ static char	**ft_cmd_tab(t_list *list, int tab_nb)
 	{
 		core = (t_core *)temp->content;
 		if (core->type == CMD)
+		{
+			tab[a] = core->str;
+			a++;
+		}
+		else if (core->type == ARG)
 		{
 			tab[a] = core->str;
 			a++;
