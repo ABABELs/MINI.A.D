@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/26 14:57:50 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/02 16:39:43 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isbuiltins(t_core *core)
 {
-	if (core->tab)
+	if (core->tab && *core->tab)
 	{
 		if (ft_strncmp("echo", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);

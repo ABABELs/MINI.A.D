@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:04:48 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 17:11:49 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/02 16:12:56 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,17 @@ void	print_lst_parsing(t_list *lst_parsing)
 			ft_printf("\tCmd");
 		else if (content->type == FD)
 			ft_printf("\tFile");
+		else if (content->type == ARG)
+			ft_printf("\tArg");
 		// ft_printf("\tDel %d", content->to_delete);
 		ft_printf("\tErr %d", content->error);
 		if (content->type == CMD)
+		{
+			ft_printf("\tIn %d", content->infile);
+			ft_printf("\tOut %d", content->outfile);
+			ft_printf("\tCod %d", content->exit_code);
+		}
+		if (content->type == ARG)
 		{
 			ft_printf("\tIn %d", content->infile);
 			ft_printf("\tOut %d", content->outfile);

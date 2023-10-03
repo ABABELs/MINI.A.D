@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:58:42 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/21 17:37:24 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/02 16:03:50 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static int	ft_after_redirr(t_mantle *mantle)
 	if (!list->next)
 	{
 		c = (t_core *)list->content;
-		if (c->type == 2 || c->type == 3 || c->type == 5 || c->type == 6)
+		if (c->type == REDIR_IN || c->type == REDIR_OUT
+			|| c->type == APPEND || c->type == HERDOC)
 			return (ft_print_msg(1, "newline"));
 	}
 	return (0);

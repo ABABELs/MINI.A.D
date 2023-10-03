@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 22:38:28 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 13:29:43 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 14:08:14 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_sigint_handler(int si)
 	(void)si;
 	ft_printf("\n");
 	rl_on_new_line();
-	// rl_replace_line("", 0);
+	rl_replace_line("", 0);
 	rl_redisplay();
 }
 
@@ -43,19 +43,13 @@ void	ft_signal_in_fork(void)
 //added
 void	ft_signal(void)
 {
-	struct sigaction	s_sigaction;
-
-	s_sigaction.sa_flags = 0;
-	s_sigaction.sa_sigaction = sig_handler;
-	sigaction(SIGINT, &s_sigaction, 0);
+	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, SIG_IGN);
 }
 
 //added
-void	sig_handler(int sig, siginfo_t *info, void *context)
+void	sig_handler(int sig)
 {
-	(void)context;
-	(void)info;
 	if (sig == SIGINT)
 	{
 		g_mini_sig = 130;

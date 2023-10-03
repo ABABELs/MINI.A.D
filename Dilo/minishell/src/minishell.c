@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:05:59 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 14:09:44 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	remove_quotes(t_mantle *mantle)
 	}
 }
 
-
 static void	no_pipe(const char *str, char **env)
 {
 	t_crust		*crust;
@@ -48,6 +47,7 @@ static void	no_pipe(const char *str, char **env)
 
 	crust = malloc(sizeof(t_crust));
 	crust->lst_cmd = malloc(sizeof(t_mantle));
+	crust->lst_cmd->first = NULL;
 	if (!crust || !crust->lst_cmd)
 		return ;
 	crust->input = (char *)str;
@@ -66,7 +66,6 @@ static void	no_pipe(const char *str, char **env)
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
 	(ft_open_fd(crust->lst_cmd), join_the_pipe(crust));
 	pipe_or_not(crust);
-	//print_core(crust->lst_cmd);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

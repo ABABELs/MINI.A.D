@@ -6,7 +6,11 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/03 13:45:07 by dilovancand      ###   ########.fr       */
+=======
+/*   Updated: 2023/09/29 16:43:46 by aabel            ###   ########.fr       */
+>>>>>>> d1fee49fc643c04f1e9f66c3125fc5257e7f9279
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +48,7 @@ typedef enum s_type
 {
 	NO,
 	CMD,
+	ARG,
 	REDIR_IN,
 	REDIR_OUT,
 	PIPE,
@@ -140,7 +145,7 @@ void	ft_sigint_handler(int si);
 void	ft_sigquit_handler(int si);
 void	ft_signal_in_fork(void);
 void	ft_signal(void);
-void	sig_handler(int sig, siginfo_t *info, void *context);
+void	sig_handler(int sig);
 
 //pipe
 void	pipe_or_not(t_crust *crust);
@@ -159,7 +164,6 @@ void	close_all_fd(t_crust *crust);
 void	ft_message(char *msg_0, char *token, char *msg_1);
 int		ft_slash(char *str);
 int		ft_count_cmds(t_crust *crust);
-
 
 //builtins
 void	cd(t_core *core, t_crust *crust);

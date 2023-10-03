@@ -6,7 +6,11 @@
 #    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/10/03 13:19:02 by dilovancand      ###   ########.fr        #
+=======
+#    Updated: 2023/09/27 15:32:40 by aabel            ###   ########.fr        #
+>>>>>>> d1fee49fc643c04f1e9f66c3125fc5257e7f9279
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +31,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 LIBFT_LIB = inc/libft/libft.a
 INC_DIR = inc/

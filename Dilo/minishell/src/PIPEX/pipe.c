@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/26 16:06:57 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/02 16:55:16 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	exec_my_pipe(t_core *core, t_crust *crust)
 	{
 		return (close_all_fd(crust), perror("Fork failed"), (void)1);
 	}
-	else if (core->child == 0 && !core->error && !core->exit_code)
+	else if (core->child == 0)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);

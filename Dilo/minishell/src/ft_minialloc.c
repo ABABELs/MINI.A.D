@@ -6,7 +6,11 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/03 13:45:33 by dilovancand      ###   ########.fr       */
+=======
+/*   Updated: 2023/09/29 13:38:19 by aabel            ###   ########.fr       */
+>>>>>>> d1fee49fc643c04f1e9f66c3125fc5257e7f9279
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +40,7 @@ static t_core	*ft_alloc_core(char **tab, int a, t_crust *crust)
 	core->exit_code = 0;
 	core->type = NO;
 	core->to_delete = 0;
+	core->tab = NULL;
 	if (!core->str)
 		return (core);
 	return (core);
