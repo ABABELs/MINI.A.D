@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
+#    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/09/26 16:22:06 by aabel            ###   ########.fr        #
+#    Updated: 2023/10/03 13:19:02 by dilovancand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/ft_path_finder.c src/ft_path_finder_utils.c src/ft_parsing_utils.c \
 			src/ft_minisplit.c src/ft_minisplit_utils.c src/ft_minisplit_count.c \
 			src/ft_minialloc.c src/ft_clean_cmd.c src/ft_redirection.c src/ft_redirection_utils.c \
-			src/ft_prepforexec.c \
+			src/ft_prepforexec.c src/ft_heredoc.c src/ft_heredoc_utils.c \
 			src/BUILTINS/cd.c src/BUILTINS/echo.c src/BUILTINS/env.c src/BUILTINS/exit.c src/BUILTINS/export.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
 			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c src/PIPEX/pipe_utils.c \

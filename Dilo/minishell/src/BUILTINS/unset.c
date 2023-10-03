@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/26 14:38:04 by aabel            ###   ########.fr       */
+/*   Updated: 2023/09/27 15:30:54 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	find_env_var(t_crust *crust, char *find_env)
 {
 	int		i;
-	char	**env;
+	//char	**env;
 
 	i = 0;
-	env = crust->env;
+	//env = crust->env;
 	while (crust->env[i])
 	{
 		if (!ft_strncmp(find_env, crust->env[i], strlen(find_env)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/26 16:52:01 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 14:05:59 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ static void	no_pipe(const char *str, char **env)
 	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
 	if (!tab || !tab[0])
 		return ;
-	(ft_alloc_mantle(tab, crust->lst_cmd), ft_type_set(crust->lst_cmd));
+	(ft_alloc_mantle(tab, crust->lst_cmd, crust), ft_type_set(crust->lst_cmd));
 	if (ft_after_redir(crust->lst_cmd) == -1)
 		return ;
+	ft_heredoc(crust->lst_cmd);
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
 	(ft_open_fd(crust->lst_cmd), join_the_pipe(crust));
 	pipe_or_not(crust);

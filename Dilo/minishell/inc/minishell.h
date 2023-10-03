@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/26 16:52:09 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 13:45:07 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	cpy(char *tab, char *s, int letters, int d);
 char	**free_all(char **tab, int a);
 
 //list alloc
-void	ft_alloc_mantle(char **tab, t_mantle *mantle);
+void	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
 
 //parsing
 int		ft_pipecount(char *str);
@@ -132,7 +132,7 @@ void	ft_type_set(t_mantle *mantle);
 
 //path handler
 int		check_dollars(char str);
-char	*ft_print_path(char *str, t_pathport *path);
+char	*ft_print_path(char *str, t_pathport *path, t_crust *crust);
 int		ft_path_strlen(char *str, int b);
 
 //signal handler
@@ -198,6 +198,11 @@ void	ft_free_array(char **array);
 void	node_to_del(t_mantle *lst_cmd);
 void	remove_node(t_list **head, t_list *node_to_remove);
 int		is_node_to_del(t_list *lst);
+
+//herdoc
+void	ft_heredoc(t_mantle *mantle);
+void	quit_heredoc(int sig);
+void	ft_readdoc(t_core *core, t_list *list);
 
 //env
 char	*ft_getenv(t_crust *crust, char *find_env);

@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/08/21 19:59:28 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 13:44:25 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static void	ft_split_path(char *str, t_pathport **pathing, int a)
 	recolle la chaine en ajoutant le chemin d'accès à la place 
 	de $PATH ou équivalent du moment qu'il existe dans l'ordinateur
 */
-static char	*ft_return_path(t_pathport *pathing, int a)
+static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 {
 	int			b;
 
@@ -99,7 +99,7 @@ static char	*ft_return_path(t_pathport *pathing, int a)
 			return (pathing->final);
 		b = ft_path_size(pathing->final);
 		pathing->pathifik = ft_preprint(pathing->final, b, a);
-		pathing->pathion = getenv(pathing->pathifik);
+		pathing->pathion = ft_getenv(crust, pathing->pathifik);
 		if (!pathing->pathion)
 			return (NULL);
 		ft_split_path(pathing->final, &pathing, a);
@@ -117,7 +117,7 @@ static char	*ft_return_path(t_pathport *pathing, int a)
 	si le $ est dans une single quote la fonction l'ignore
 	sinon va chercher la variable d'environnement et la place dans la string
 */
-char	*ft_print_path(char *str, t_pathport *path)
+char	*ft_print_path(char *str, t_pathport *path, t_crust *crust)
 {
 	int			a;
 
@@ -139,7 +139,7 @@ char	*ft_print_path(char *str, t_pathport *path)
 		}
 		if (path->final[a] == '$')
 			if (path->c != 39)
-				path->final = ft_return_path(path, a);
+				path->final = ft_return_path(path, a, crust);
 		if (!path->final)
 			return (NULL);
 	}
