@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 11:48:36 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 14:25:42 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static void	ft_fd_type(t_mantle *mantle)
 		core = (t_core *)list->content;
 		core2 = (t_core *)list->next->content;
 		if ((core->type == REDIR_IN || core->type == REDIR_OUT
-				|| core->type == APPEND) && core2->type == NO)
+				|| core->type == APPEND || core->type == HERDOC)
+			&& core2->type == NO)
 			core2->type = FD;
 		list = list->next;
 	}
@@ -75,7 +76,7 @@ static void	ft_cmd_type(t_mantle *mantle)
 	while (list)
 	{
 		core = (t_core *)list->content;
-		if (list->prev == NULL)
+		if (list->prev == NULL && core->type == NO)
 			core->type = CMD;
 		if (core->type == NO && ((((t_core *)list->prev->content)->type == CMD)
 				|| ((t_core *)list->prev->content)->type == ARG))

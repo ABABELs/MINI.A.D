@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:43:34 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 15:38:58 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ static void	no_pipe(const char *str, char **env)
 	(ft_heredoc(crust->lst_cmd), env_var_expension(crust, crust->lst_cmd->first));
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
 	(ft_open_fd(crust->lst_cmd), join_the_pipe(crust));
-	pipe_or_not(crust);
-	last_exit_code(crust->lst_cmd->first);
+	(pipe_or_not(crust), last_exit_code(crust->lst_cmd->first));
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

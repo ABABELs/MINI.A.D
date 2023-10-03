@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:13:29 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 13:29:34 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 14:45:28 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static int	ft_readingforreal(t_list *list, int fd)
 		input = readline("> ");
 		if (g_mini_sig == 1000)
 			exit(1);
-		else if (input && ft_strcmp(input, ""))
+		else if (input && ft_strcmp(input, "") == 0)
 			exit (0);
-		else if (input && ft_strcmp(input, "\n"))
+		else if (input && ft_strcmp(input, "\n") == 0)
 			ft_hereline();
-		else if (input && nextcore->str)
+		else if (input && ft_strcmp(input, nextcore->str) != 1)
 			break ;
 		else
 			write(fd, input, ft_strlen(input));

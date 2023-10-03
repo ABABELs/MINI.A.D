@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:32:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 13:19:42 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 14:33:37 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ static void	ft_finding_lst(t_list *list)
 		{
 			core = (t_core *)list->next->content;
 			ft_readdoc(core, list);
-			break ;
 		}
-		else
-			list = list->next;
+		list = list->next;
 	}
 }
 
