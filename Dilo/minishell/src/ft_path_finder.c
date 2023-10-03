@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 13:44:25 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:22:44 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*ft_preprint(char *str, int b, int a)
 		tmp[c - 1] = str[a + c];
 		c++;
 	}
-	tmp[c] = '\0';
+	tmp[c - 1] = '\0';
 	return (tmp);
 }
 
@@ -105,7 +105,6 @@ static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 		ft_split_path(pathing->final, &pathing, a);
 		pathing->final = ft_strjoin(pathing->string1, pathing->pathion);
 		pathing->final = ft_strjoin(pathing->final, pathing->string2);
-		(free(pathing->string1), free(pathing->string2));
 	}
 	return (pathing->final);
 }

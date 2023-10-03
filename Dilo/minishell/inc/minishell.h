@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:13:24 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:32:07 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	cpy(char *tab, char *s, int letters, int d);
 char	**free_all(char **tab, int a);
 
 //list alloc
-void	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
+int		ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
 
 //parsing
 int		ft_pipecount(char *str);

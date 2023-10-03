@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:28:04 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:32:39 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ static void	no_pipe(const char *str, char **env)
 	if (!tab || !tab[0])
 		return ;
 	pipe_syntax_checker(crust, crust->lst_cmd->first);
-	(ft_alloc_mantle(tab, crust->lst_cmd, crust), ft_type_set(crust->lst_cmd));
+	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
+		return ;
+	ft_type_set(crust->lst_cmd);
 	if (ft_after_redir(crust->lst_cmd) == -1)
 		return ;
 	ft_heredoc(crust->lst_cmd);

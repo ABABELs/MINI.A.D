@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 11:50:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:39:58 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:25:41 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	int	a;
 
 	a = 0;
-	while ((s1[a] == s2[a]) && (s1[a] != '\0'))
+	while ((s1[a] == s2[a]) && (s1[a] != '\0') && s1 && s2)
 		a++;
 	if (s1[a] == '\0' && s2[a] == '\0')
 		return (0);
