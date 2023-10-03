@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:13:19 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:31:51 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static t_core	*ft_alloc_core(char **tab, int a, t_crust *crust)
 	core->to_delete = 0;
 	core->tab = NULL;
 	if (!core->str)
-		return (core);
+		return (NULL);
 	return (core);
 }
 
 //créer une liste chainée de core dans mantle
-void	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust)
+int	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust)
 {
 	t_core	*tmp;
 	t_list	*list_tmp;
@@ -53,7 +53,10 @@ void	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust)
 	while (tab[++a])
 	{
 		tmp = ft_alloc_core(tab, a, crust);
+		if (tmp == NULL)
+			return (-1);
 		list_tmp = ft_lstnew(tmp);
 		ft_lstadd_back(&mantle->first, list_tmp);
 	}
+	return (0);
 }

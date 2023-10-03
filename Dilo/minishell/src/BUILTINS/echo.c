@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:56:03 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/03 12:50:37 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 15:00:38 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_echo(t_core *core)
 	}
 	while (core->tab[++i])
 	{
-		write(core->outfile, core->tab[1], ft_strlen(core->tab[1]));
+		write(core->outfile, core->tab[i], ft_strlen(core->tab[i]));
 		if (core->tab[i + 1] != NULL)
 			write(core->outfile, " ", 1);
 	}

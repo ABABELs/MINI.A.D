@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 16:20:05 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 16:24:00 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	cpy(char *tab, char *s, int letters, int d);
 char	**free_all(char **tab, int a);
 
 //list alloc
-void	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
+int		ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
 
 //parsing
 int		ft_pipecount(char *str);
