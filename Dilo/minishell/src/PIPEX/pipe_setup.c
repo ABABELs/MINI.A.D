@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/29 16:00:38 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 12:52:03 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,6 @@ void	join_the_pipe(t_crust *crust)
 		list = list->next;
 	}
 }
-
-// void	not_used_pipe(t_crust *crust)
-// {
-// 	t_list	*list;
-// 	t_core	*current;
-// 	t_core	*prev;
-// 	t_core	*next;
-
-// 	list = crust->lst_cmd->first;
-// 	while (list)
-// 	{
-// 		if (!list->next && !list->prev)
-// 			break ;
-// 		current = ((t_core *)list->content);
-// 		if (current->type == PIPE)
-// 		{
-// 			prev = ((t_core *)list->prev->content);
-// 			next = ((t_core *)list->next->content);
-// 			if ((prev->outfile == current->infile
-// 					&& current->outfile != next->infile))
-// 				prev->outfile = -1;
-// 			if ((prev->outfile != current->infile
-// 					&& current->outfile == next->infile))
-// 				next->infile = -1;
-// 		}
-// 		list = list->next;
-// 	}
-// }
 
 int	ft_slash(char *str)
 {

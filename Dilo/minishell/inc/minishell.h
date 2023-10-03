@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/29 16:43:46 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 14:06:00 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_crust
 	char		**env;
 	char		**path;
 	char		*root_path;
+	int			syntax_error;
 	t_mantle	*lst_cmd;
 }				t_crust;
 
@@ -160,6 +161,10 @@ void	close_all_fd(t_crust *crust);
 void	ft_message(char *msg_0, char *token, char *msg_1);
 int		ft_slash(char *str);
 int		ft_count_cmds(t_crust *crust);
+void	pipe_syntax_checker(t_crust *crust, t_list *list);
+
+//exit_code
+void	last_exit_code(t_list *list);
 
 //builtins
 void	cd(t_core *core, t_crust *crust);
