@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:13:24 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 15:33:19 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,5 +211,12 @@ void	ft_readdoc(t_core *core, t_list *list);
 
 //env
 char	*ft_getenv(t_crust *crust, char *find_env);
-
+void	env_var_expension(t_crust *crust, t_list *lst_cmd);
+int		is_env_var(t_core *core);
+char	*cut_to_getenv(int *i, char *tmp, t_core *core, t_crust *crust);
+void	env_to_string(t_crust *crust, t_core *core);
+char	*ft_strjoin_char(char *s1, char s2);
+int		ft_is_envchar(int c);
+int		is_quoted_and_who(char	*input, int goal);
+int		ft_strlen_int(char *str);
 #endif
