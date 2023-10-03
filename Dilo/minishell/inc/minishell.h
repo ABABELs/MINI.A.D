@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 15:33:19 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 16:20:05 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,12 @@ int		ft_export_char(char c, int i);
 int		ft_check_env(t_crust *crust, char *find_env);
 char	**array_join(char **array, char *line);
 char	*check_tilde(t_core *core, t_crust *crust, char *pwd, char *path);
+void	poop(t_core *core, t_crust *crust);
+void	normed(int *is_syntax, t_core *core, int i);
+int		ft_env_exist(t_crust *crust, char *env);
+void	ft_export_no_args(t_crust *crust, t_core *core);
+char	**ft_sort_env(char **env, char **new);
+void	ft_env_no_args(char **env, t_core *core);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);

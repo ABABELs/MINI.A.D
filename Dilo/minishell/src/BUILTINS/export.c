@@ -6,40 +6,12 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/09/20 11:45:51 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 16:16:19 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	export(t_crust *crust, t_core *core)
-{
-	int	i;
-	int	is_syntax;
-	int	is_env;
-
-	i = 0;
-	is_syntax = 0;
-	is_env = 0;
-	if (core->outfile != 1)
-		return (core->exit_code = 1, (void)0);
-	while (core->tab[++i])
-	{
-		is_syntax = ft_check_syntax(core->tab[i]);
-		if (is_syntax < 0)
-			core->exit_code = 1;
-		if (is_syntax > 0)
-		{
-			is_env = ft_check_env(crust,
-					ft_substr(core->tab[i], 0, is_syntax - 1));
-			if (is_env == 0)
-			{
-				crust->env = array_join(crust->env, core->tab[i]);
-				core->exit_code = 0;
-			}
-		}
-	}
-}
 
 int	ft_check_syntax(char *str)
 {
@@ -88,30 +60,38 @@ int	ft_check_env(t_crust *crust, char *find_env)
 	return (0);
 }
 
-char	**array_join(char **array, char *line)
+void	normed(int *is_syntax, t_core *core, int i)
 {
-	int		i;
-	char	**new_array;
-	int		len;
+	*is_syntax = ft_check_syntax(core->tab[i]);
+	if (*is_syntax < 0)
+		core->exit_code = 1;
+}
+
+void	export(t_crust *crust, t_core *core)
+{
+	int	i;
+	int	is_syntax;
+	int	is_env;
 
 	i = 0;
-	if (!array)
-		i = 0;
-	else
-		while (array[i])
-			i++;
-	len = i;
-	new_array = malloc(sizeof(char *) * (i + 2));
-	if (!new_array)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	is_syntax = 0;
+	is_env = 0;
+	if (core->outfile != 1)
+		return (core->exit_code = 1, (void)0);
+	poop(core, crust);
+	while (core->tab[++i])
 	{
-		new_array[i] = ft_strdup(array[i]);
-		i++;
+		normed(&is_syntax, core, i);
+		if (is_syntax > 0)
+		{
+			is_env = ft_check_env(crust,
+					ft_substr(core->tab[i], 0, is_syntax - 1));
+			if (is_env == 0 && !ft_env_exist(crust, core->tab[i]))
+			{
+				crust->env = array_join(crust->env, core->tab[i]);
+				core->exit_code = 0;
+			}
+		}
 	}
-	new_array[i] = ft_strdup(line);
-	new_array[++i] = NULL;
-	ft_free_array(array);
-	return (new_array);
 }
+
