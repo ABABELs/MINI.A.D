@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/02 16:58:07 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/03 11:48:36 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ static void	ft_cmd_type(t_mantle *mantle)
 		core = (t_core *)list->content;
 		if (list->prev == NULL)
 			core->type = CMD;
-		if (core->type == NO && ((((t_core *)list->prev->content)->type == CMD) || ((t_core *)list->prev->content)->type == ARG))
+		if (core->type == NO && ((((t_core *)list->prev->content)->type == CMD)
+				|| ((t_core *)list->prev->content)->type == ARG))
 			core->type = ARG;
 		if (core->type == NO && list->prev != NULL
 			&& ((((t_core *)list->prev->content)->type != CMD)
