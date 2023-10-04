@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 23:25:40 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 10:56:25 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 14:54:37 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	arg_good(t_core *core, t_crust *crust)
 	oldpwd = ft_getenv(crust, ft_strdup("PWD"));
 	if (core->tab && core->tab[1])
 	{
-		if (chdir(core->tab[1]) != 1)
+		if (chdir(core->tab[1]) != -1)
 		{
 			set_pwds(crust, oldpwd);
 			return (1);
@@ -71,7 +71,7 @@ void	cd(t_core *core, t_crust *crust)
 	if (opendir(path) == NULL)
 	{
 		printf("minishell: cd: %s", core->tab[1]);
-		perror(" ");
+		perror("");
 		core->exit_code = 1;
 	}
 	else
@@ -83,26 +83,23 @@ void	cd(t_core *core, t_crust *crust)
 
 char	*check_tilde(t_core *core, t_crust *crust, char*pwd, char *path)
 {
-	if (!ft_strncmp("~", core->tab[1], 1))
+	if (core->tab[1][0] == '~')
 	{
 		path = ft_strjoin(path, crust->root_path);
-		core->tab[1]++;
-		if (!ft_strncmp("/", core->tab[1], 1))
+		if (ft_strlen(core->tab[1]) >= 2 && core->tab[1][1] == '/')
 		{
-			core->tab[1]++;
-			if (core->tab[1][0] != 0)
-			{
-				path = ft_strjoin(path, ft_strdup("/"));
-				path = ft_strjoin(path, core->tab[1]);
-			}
+			if (core->tab[1][2] != 0)
+				path = ft_strjoin(path, &core->tab[1][1]);
 		}
-		else if (core->tab[1][0] != 0)
-			return (NULL);
+		else if (ft_strlen(core->tab[1]) >= 1 && core->tab[1][1] != 0)
+			return ((char *)opendir(path));
+		else if (ft_strlen(core->tab[1]) >= 2 && core->tab[1][2] != 0)
+			return ((char *)opendir(path));
 	}
 	else
 	{
-		pwd = getcwd(pwd, CWD_SIZE);
-		path = ft_strjoin(pwd, ft_strdup("/"));
+		pwd = getcwd(NULL, 0);
+		path = ft_strjoin(ft_strdup(pwd), "/");
 		path = ft_strjoin(path, core->tab[1]);
 	}
 	return (path);

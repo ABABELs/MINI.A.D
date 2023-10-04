@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:56:03 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/03 15:00:38 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 14:56:44 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_echo(t_core *core)
 		close(core->infile);
 		core->infile = 0;
 	}	
-	if (core->tab[1] && ft_strncmp(core->tab[1], "-n", 2) == 0)
+	if (core->tab[1] && ft_strncmp(core->tab[1], "-n", 3) == 0)
 	{
 		flag = 1;
 		i++;

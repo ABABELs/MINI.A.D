@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:03:50 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 10:56:42 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 14:57:50 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	env(t_crust *crust, t_core *core)
 	while (crust->env[++i])
 	{
 		ft_putstr_fd(crust->env[i], core->outfile);
-		write(core->outfile, "\n", 1);
 	}
 }
 

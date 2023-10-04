@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/04 10:55:53 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 15:56:40 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,25 @@ int	ft_export_char(char c, int i)
 
 int	ft_check_env(t_crust *crust, char *find_env)
 {
-	int	i;
+	int		i;
+	char	*tmp;
 
 	i = -1;
-	if (!find_env)
-		find_env = ft_strjoin(find_env, ft_strdup("="));
+	tmp = ft_strdup("=");
+	if (find_env)
+	{
+		find_env = ft_strjoin(find_env, tmp);
+		free(tmp);
+	}
 	while (crust->env[++i])
 	{
-		if (!ft_strncmp(find_env, crust->env[i], ft_strlen(find_env)))
+		if (!ft_strncmp(find_env, crust->env[i], ft_strlen(find_env) + 1))
+		{
+			free(find_env);
 			return (1);
+		}
 	}
+	free(find_env);
 	return (0);
 }
 
@@ -87,7 +96,7 @@ void	export(t_crust *crust, t_core *core)
 					ft_substr(core->tab[i], 0, is_syntax - 1));
 			if (is_env == 0 && !ft_env_exist(crust, core->tab[i]))
 			{
-				crust->env = array_join(crust->env, core->tab[i]);
+				crust->env = array_join(crust->env, ft_strdup(core->tab[i]));
 				core->exit_code = 0;
 			}
 		}
