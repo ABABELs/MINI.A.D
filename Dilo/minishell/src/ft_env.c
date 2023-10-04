@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:36:04 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 10:25:08 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 16:40:47 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_getenv(t_crust *crust, char *find_env)
 	int		i;
 	int		len;
 	char	**env;
+	char	*str;
 
 	i = -1;
 	env = crust->env;
@@ -30,7 +31,11 @@ char	*ft_getenv(t_crust *crust, char *find_env)
 		if (!strncmp(find_env, crust->env[i], ft_strlen(find_env)))
 		{
 			free(find_env);
-			return (ft_substr(env[i], len, ft_strlen(env[i]) - len));
+			str = ft_substr(env[i], len, ft_strlen(env[i]) - len);
+			if (!str)
+				return (NULL);
+			else
+				return (str);
 		}
 	}
 	free(find_env);

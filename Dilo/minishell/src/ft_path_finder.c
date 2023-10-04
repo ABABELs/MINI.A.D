@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_path_finder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:04:52 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 16:54:32 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 		pathing->final = ft_strjoin(pathing->string1, pathing->pathion);
 		pathing->final = ft_strjoin(pathing->final, pathing->string2);
 	}
+	//free(pathing->pathifik);
+	free(pathing->pathion);
+	free(pathing->string2);
 	return (pathing->final);
 }
 
