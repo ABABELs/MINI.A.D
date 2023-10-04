@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:47:54 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/20 14:18:56 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:55:22 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,3 @@ int	is_node_to_del(t_list *lst)
 	}
 	return (0);
 }
-
-

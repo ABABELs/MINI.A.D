@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:22:51 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/19 12:37:46 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:56:01 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ void	pwd(t_core *core)
 		write(core->outfile, "\n", 1);
 	}
 }
-

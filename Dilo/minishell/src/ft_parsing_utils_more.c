@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_utils_more.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:21:22 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/03 14:06:24 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:19:26 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ void	pipe_syntax_checker(t_crust *crust, t_list *list)
 			|| (core->type == PIPE && list->next
 				&& ((t_core *)list->next->content)->type == PIPE))
 		{
-			ft_message("minishell: syntax error near unexpected token `"
-				, core->str, "'\n");
+			ft_message("minishell: syntax error near unexpected token `",
+				core->str, "'\n");
 			crust->syntax_error = 1;
 			g_mini_sig = 2;
 			return ;
 		}
 		else if (core->type == PIPE && list->next == NULL)
 		{
-			ft_message("minishell: syntax error near unexpected token `"
-				, core->str, "'\n");
+			ft_message("minishell: syntax error near unexpected token `",
+				core->str, "'\n");
 			crust->syntax_error = 1;
 			g_mini_sig = 2;
 			return ;

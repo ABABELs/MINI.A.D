@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 23:25:40 by aabel             #+#    #+#             */
-/*   Updated: 2023/09/26 14:21:31 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:56:25 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	set_pwds(t_crust *crust, char *oldpwd)
 		}
 	}
 }
-
 
 int	arg_good(t_core *core, t_crust *crust)
 {

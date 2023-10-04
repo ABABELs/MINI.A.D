@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepforexec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/02 16:54:12 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:24:26 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,10 @@ static int	ft_countcmd(t_list *temp)
 	return (a);
 }
 
-static char	**ft_cmd_tab(t_list *list, int tab_nb)
+static char	**ft_cmd_tab2(t_list *temp, int a, char **tab)
 {
-	t_list	*temp;
 	t_core	*core;
-	char	**tab;
-	int		a;
 
-	tab = malloc(sizeof(char *) * (tab_nb + 1));
-	if (!tab)
-		return (NULL);
-	temp = list;
-	a = 0;
 	while (temp)
 	{
 		core = (t_core *)temp->content;
@@ -65,6 +57,20 @@ static char	**ft_cmd_tab(t_list *list, int tab_nb)
 	}
 	tab[a] = NULL;
 	return (tab);
+}
+
+static char	**ft_cmd_tab(t_list *list, int tab_nb)
+{
+	t_list	*temp;
+	char	**tab;
+	int		a;
+
+	tab = malloc(sizeof(char *) * (tab_nb + 1));
+	if (!tab)
+		return (NULL);
+	temp = list;
+	a = 0;
+	return (ft_cmd_tab2(temp, a, tab));
 }
 
 void	ft_joincmd(t_mantle *mantle)

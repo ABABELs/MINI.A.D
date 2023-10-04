@@ -6,30 +6,13 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 16:09:49 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 10:28:25 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern	int	g_mini_sig;
-
-
-void	last_exit_code(t_list *list)
-{
-	t_core	*core;
-
-	core = NULL;
-	if (!list)
-		g_mini_sig = 0;
-	while (list)
-	{
-		core = (t_core *)list->content;
-		if (core->type == CMD)
-			g_mini_sig = core->exit_code;
-		list = list->next;
-	}
-}
+extern int	g_mini_sig;
 
 /*
 	récupère la liste chainée contenant les cores les parcours
@@ -137,8 +120,3 @@ int	main(int argc, char **argv, char **env)
 	ft_minishell(env);
 	return (0);
 }
-
-//supprimer les maillon vide
-//ouvrir les fd
-//mettre en place heredoc
-//faire un gentenv perso

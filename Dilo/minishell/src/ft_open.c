@@ -6,30 +6,11 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/21 16:13:38 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 10:53:15 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static t_core	*ft_find_cmd(t_list *list)
-{
-	t_core	*core;
-	t_list	*tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		core = (t_core *)tmp->content;
-		if (core->type == CMD && core->tab)
-			return (core);
-		else if (tmp->next)
-			tmp = tmp->next;
-		else
-			return (NULL);
-	}
-	return (0);
-}
 
 static int	ft_open_rout(t_core *cmd_core, t_core *is_fd)
 {

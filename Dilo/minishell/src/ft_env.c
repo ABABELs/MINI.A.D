@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:36:04 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/03 15:31:42 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 10:25:08 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,3 @@ void	env_to_string(t_crust *crust, t_core *core)
 	free(core->str);
 	core->str = tmp;
 }
-

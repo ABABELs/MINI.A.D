@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:09:00 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 10:53:41 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ int		ft_print_msg(int a, char *str);
 
 //open
 int		ft_open_fd(t_mantle *mantle);
+t_core	*ft_find_cmd(t_list *list);
 
 //free
 void	ft_free_array(char **array);
@@ -225,4 +226,5 @@ char	*ft_strjoin_char(char *s1, char s2);
 int		ft_is_envchar(int c);
 int		is_quoted_and_who(char	*input, int goal);
 int		ft_strlen_int(char *str);
+
 #endif
