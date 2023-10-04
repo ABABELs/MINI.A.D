@@ -6,7 +6,7 @@
 #    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/10/04 10:06:05 by dilovancand      ###   ########.fr        #
+#    Updated: 2023/10/04 10:09:03 by dilovancand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/ft_error.c src/ft_print_error_msg.c \
 			src/free/freeing.c src/ft_open.c \
 			src/ft_env.c src/ft_env_utils.c \
-			src/ft_parsing_utils_more.c \
+			src/ft_parsing_utils_more.c \-
 			
 OBJECTS = $(SOURCES:.c=.o)
 
