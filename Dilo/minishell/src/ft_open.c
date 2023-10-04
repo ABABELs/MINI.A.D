@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:53:15 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 16:11:04 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_open_fd(t_mantle *mantle)
 		core = (t_core *)list->content;
 		if (ft_check_all_fd(core, cmd_core, is_fd) == -1)
 		{
-			ft_printf("fd error");
+			// ft_printf("Permissin dinied\n");
 			return (-1);
 		}
 		if (core->tab)
