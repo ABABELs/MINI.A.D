@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minialloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 15:31:51 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 14:27:59 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static t_core	*ft_alloc_core(char **tab, int a, t_crust *crust)
 	core->type = NO;
 	core->to_delete = 0;
 	core->tab = NULL;
+	core->child = 0;
 	if (!core->str)
 		return (NULL);
 	return (core);
