@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aabel <aabel@student.42.fr>                +#+  +:+       +#+         #
+#    By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/10/03 15:39:08 by aabel            ###   ########.fr        #
+#    Updated: 2023/10/04 10:06:05 by dilovancand      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

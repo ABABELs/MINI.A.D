@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 15:22:44 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 10:04:52 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,18 @@ static void	ft_split_path(char *str, t_pathport **pathing, int a)
 		(*pathing)->string1[c] = str[c];
 		c++;
 	}
-	c = ft_path_strlen(str, b);
+	(*pathing)->string1[c] = '\0';
+	c = ft_path_strlen(str, (b + 1));
 	(*pathing)->string2 = malloc(sizeof(char) * (c + 1));
 	if (!(*pathing)->string2)
 		return ;
-	c = 0;
+	c = 1;
 	while (str[b + c])
 	{
-		(*pathing)->string2[c] = str[b + c];
+		(*pathing)->string2[c - 1] = str[b + c];
 		c++;
 	}
+	(*pathing)->string2[c - 1] = '\0';
 }
 
 /* 

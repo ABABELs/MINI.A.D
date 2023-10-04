@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 16:08:33 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/03 16:09:49 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 extern	int	g_mini_sig;
 
-/*
-	récupère la liste chainée contenant les cores les parcours
-	retire les quotes qui ne sont pas dans d'autres quotes
-	dans la chaine de charactère
-*/
 
 void	last_exit_code(t_list *list)
 {
@@ -36,6 +31,11 @@ void	last_exit_code(t_list *list)
 	}
 }
 
+/*
+	récupère la liste chainée contenant les cores les parcours
+	retire les quotes qui ne sont pas dans d'autres quotes
+	dans la chaine de charactère
+*/
 static void	remove_quotes(t_mantle *mantle)
 {
 	t_list	*list;
