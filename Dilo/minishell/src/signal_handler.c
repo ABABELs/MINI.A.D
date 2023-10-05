@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 22:38:28 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:08:14 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/04 14:27:03 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

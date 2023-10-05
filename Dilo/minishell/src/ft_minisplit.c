@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minisplit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 14:39:41 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/04 14:46:05 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,10 @@ char	**ft_minisplit(char const *s)
 	real_tab = ft_redir_count((char *)s, '<', a, tab_nb) + real_tab;
 	real_tab = ft_redir_count((char *)s, '>', a, tab_nb) + real_tab;
 	tab = malloc(sizeof(char *) * (real_tab + 1));
-	if (tab == 0)
+	if (!tab)
+	{
+		ft_free_array(tab);
 		return (NULL);
+	}
 	return (into_tab(tab, s, tab_nb));
 }
