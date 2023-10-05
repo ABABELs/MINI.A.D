@@ -6,11 +6,13 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:03:50 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 14:57:50 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/05 14:57:50 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_mini_sig;
 
 void	env(t_crust *crust, t_core *core)
 {

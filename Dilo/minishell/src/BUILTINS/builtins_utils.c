@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/03 15:53:44 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/05 15:41:19 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 int	ft_isbuiltins(t_core *core)
 {
+	if (core->tab == NULL || (*core->tab) == NULL)
+		return (0);
+	else if (!ft_strncmp("", core->str, ft_strlen(core->str) + 1))
+	{
+		core->error = 1;
+		return (0);
+	}
 	if (core->tab && *core->tab)
 	{
 		if (ft_strncmp("echo", (*core->tab), ft_strlen((*core->tab))) == 0)
@@ -22,11 +29,9 @@ int	ft_isbuiltins(t_core *core)
 			return (1);
 		else if (ft_strncmp("pwd", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("export", (*core->tab),
-				ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("export", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("unset", (*core->tab),
-				ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("unset", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
 		else if (ft_strncmp("env", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);

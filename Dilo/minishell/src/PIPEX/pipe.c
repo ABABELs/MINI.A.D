@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/05 13:16:24 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/05 15:39:50 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	wait_all_process(t_crust *crust)
 	while (list && !ft_isbuiltins(core))
 	{
 		exit_code = 0;
-		if (!core->error)
+		if (!core->error && core->type == CMD)
 			waitpid(core->child, &exit_code, 0);
 		if (core->exit_code == 0)
 			core->exit_code = WEXITSTATUS(exit_code);
