@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/05 13:16:24 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/05 15:47:25 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern	int	g_mini_sig;
+extern int	g_mini_sig;
 
 void	pipe_or_not(t_crust *crust)
 {
@@ -20,7 +20,7 @@ void	pipe_or_not(t_crust *crust)
 		lanch_pipe(crust);
 	else
 		return ;
-	// print_lst_parsing(crust->lst_cmd->first);
+	print_lst_parsing(crust->lst_cmd->first);
 }
 
 void	wait_all_process(t_crust *crust)
@@ -36,7 +36,7 @@ void	wait_all_process(t_crust *crust)
 	while (list && !ft_isbuiltins(core))
 	{
 		exit_code = 0;
-		if (!core->error)
+		if (!core->error && core->type == CMD)
 			waitpid(core->child, &exit_code, 0);
 		if (core->exit_code == 0)
 			core->exit_code = WEXITSTATUS(exit_code);
