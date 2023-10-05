@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 16:23:52 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/05 20:45:56 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static int	ft_check_all_fd(t_core *core, t_core *cmd_core, t_core *is_fd)
 	else if (core->type == REDIR_OUT && cmd_core && is_fd->type == FD)
 	{
 		if (ft_open_rout(cmd_core, is_fd) == -1)
-			return (-1);
+			return (-2);
 	}
 	else if (core->type == APPEND && cmd_core && is_fd->type == FD)
 	{
 		if (ft_open_append(cmd_core, is_fd) == -1)
-			return (-1);
+			return (-3);
 	}
 	return (0);
 }
@@ -83,12 +83,9 @@ int	ft_open_fd(t_mantle *mantle)
 	{
 		is_fd = (t_core *)list->next->content;
 		core = (t_core *)list->content;
-		if (ft_check_all_fd(core, cmd_core, is_fd) == -1)
-		{
-			ft_printf("Permission denied\n");
-			cmd_core->exit_code = 1;
-			return (-1);
-		}
+		if (ft_check_all_fd(core, cmd_core, is_fd) < 0)
+			return (ft_redir_error(is_fd->str, list,
+					ft_check_all_fd(core, cmd_core, is_fd)));
 		cmd_core->exit_code = 0;
 		if (core->tab)
 			cmd_core = ft_find_cmd(list);

@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:53:41 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/05 20:54:29 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ int		ft_print_msg(int a, char *str);
 //open
 int		ft_open_fd(t_mantle *mantle);
 t_core	*ft_find_cmd(t_list *list);
+int		ft_redir_error(char *str, t_list *list, int error);
 
 //free
 void	ft_free_array(char **array);
