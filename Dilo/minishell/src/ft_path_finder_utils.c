@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_path_finder_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 20:14:56 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:28:53 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/05 15:13:29 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

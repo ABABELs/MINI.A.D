@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 13:54:48 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/05 15:42:27 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_open_rin(t_core *cmd_core, t_core *is_fd)
 	if (fd < 0)
 		return (-1);
 	else
-		cmd_core->outfile = fd;
+		cmd_core->infile = fd;
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int	ft_open_fd(t_mantle *mantle)
 		core = (t_core *)list->content;
 		if (ft_check_all_fd(core, cmd_core, is_fd) == -1)
 		{
-			ft_printf("Permissin denied\n");
+			ft_printf("Permission denied\n");
 			cmd_core->exit_code = 1;
 			return (-1);
 		}
