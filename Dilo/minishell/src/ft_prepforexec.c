@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepforexec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:24:26 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/05 16:21:11 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ static int	ft_countcmd(t_list *temp)
 			a++;
 		else if (core->type == ARG)
 			a++;
-		else
+		else if (core->type == PIPE)
 			break ;
 		list = list->next;
 	}
+	ft_printf("%d\n", a);
 	return (a);
 }
 
@@ -51,7 +52,7 @@ static char	**ft_cmd_tab2(t_list *temp, int a, char **tab)
 			tab[a] = core->str;
 			a++;
 		}
-		else
+		else if (core->type == PIPE)
 			break ;
 		temp = temp->next;
 	}

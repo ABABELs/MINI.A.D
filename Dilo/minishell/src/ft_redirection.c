@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:25:42 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/05 16:06:00 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ static void	ft_cmd_type(t_mantle *mantle)
 		if (list->prev == NULL && core->type == NO)
 			core->type = CMD;
 		if (core->type == NO && ((((t_core *)list->prev->content)->type == CMD)
-				|| ((t_core *)list->prev->content)->type == ARG))
+				|| ((t_core *)list->prev->content)->type == ARG
+				|| (((t_core *)list->prev->content)->type == FD)))
 			core->type = ARG;
 		if (core->type == NO && list->prev != NULL
 			&& ((((t_core *)list->prev->content)->type != CMD)
