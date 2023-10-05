@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 21:09:46 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 16:03:11 by aabel            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/10/05 16:26:33 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minishell.h"
 
@@ -79,7 +80,8 @@ static void	ft_cmd_type(t_mantle *mantle)
 		if (list->prev == NULL && core->type == NO)
 			core->type = CMD;
 		if (core->type == NO && ((((t_core *)list->prev->content)->type == CMD)
-				|| ((t_core *)list->prev->content)->type == ARG))
+				|| ((t_core *)list->prev->content)->type == ARG
+				|| (((t_core *)list->prev->content)->type == FD)))
 			core->type = ARG;
 		if (core->type == NO && (((t_core *)list->prev->content)->type == FD))
 			core->type = ARG;

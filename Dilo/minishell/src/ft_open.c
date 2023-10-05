@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 15:42:27 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/05 16:23:52 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_open_rout(t_core *cmd_core, t_core *is_fd)
 {
 	int	fd;
 
-	fd = open(is_fd->str, O_CREAT | O_RDWR, S_IRUSR
+	fd = open(is_fd->str, O_CREAT | O_TRUNC | O_RDWR, S_IRUSR
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
 		return (-1);
