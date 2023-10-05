@@ -6,7 +6,7 @@
 /*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/04 15:56:40 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/05 12:57:47 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_check_syntax(char *str)
 		else if (!ft_export_char(str[i], i))
 		{
 			printf("minishell: export: `%s':", str);
-			ft_putstr_fd("not a valid identifier\n", 2);
+			ft_putstr_fd(" not a valid identifier\n", 2);
 			return (-1);
 		}
 	}
