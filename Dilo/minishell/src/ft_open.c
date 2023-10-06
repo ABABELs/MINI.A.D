@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 14:34:22 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/06 16:50:28 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ int	ft_open_fd(t_mantle *mantle)
 		is_fd = (t_core *)list->next->content;
 		core = (t_core *)list->content;
 		if (ft_check_all_fd(core, cmd_core, is_fd) < 0)
-			return (ft_redir_error(is_fd->str, list,
-					ft_check_all_fd(core, cmd_core, is_fd)));
+			if (ft_redir_error(is_fd->str, list,
+					ft_check_all_fd(core, cmd_core, is_fd)) != 0)
+				return (-1);
 		cmd_core->exit_code = 0;
 		if (core->tab)
 			cmd_core = ft_find_cmd(list);

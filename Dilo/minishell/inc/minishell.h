@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 20:54:29 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/06 15:54:26 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,7 @@ int		ft_print_msg(int a, char *str);
 int		ft_open_fd(t_mantle *mantle);
 t_core	*ft_find_cmd(t_list *list);
 int		ft_redir_error(char *str, t_list *list, int error);
+int		ft_find_pipe(t_list *list);
 
 //free
 void	ft_free_array(char **array);

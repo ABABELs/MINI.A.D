@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 23:25:40 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 14:54:37 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/06 16:17:15 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	cd(t_core *core, t_crust *crust)
 				": HOME not set\n"), (void)0);
 	if (opendir(path) == NULL)
 	{
-		printf("minishell: cd: %s", core->tab[1]);
-		perror("");
+		ft_message("minishell: cd: ", core->tab[1],
+			": No such file or directory\n");
 		core->exit_code = 1;
 	}
 	else

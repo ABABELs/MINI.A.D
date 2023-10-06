@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:38:25 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/06 12:55:49 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/06 15:22:37 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_exit_args(t_core *core)
 	else
 	{
 		ft_message("minishell: exit: ",
-			"", "numeric argument required");
+			"", "numeric argument required\n");
 		exit(255);
 	}
 }
