@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 16:21:11 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/05 16:27:32 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static int	ft_countcmd(t_list *temp)
 			break ;
 		list = list->next;
 	}
-	ft_printf("%d\n", a);
 	return (a);
 }
 
