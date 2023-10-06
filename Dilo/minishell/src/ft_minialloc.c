@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 14:52:11 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/06 13:26:11 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,13 @@ int	ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust)
 	while (tab[++a])
 	{
 		tmp = ft_alloc_core(tab, a, crust);
-		if (!tmp)
+		if (tmp)
+		{
+			list_tmp = ft_lstnew(tmp);
+			ft_lstadd_back(&mantle->first, list_tmp);
+		}
+		else if (!tmp && !tab[a + 1])
 			return (-1);
-		list_tmp = ft_lstnew(tmp);
-		ft_lstadd_back(&mantle->first, list_tmp);
 	}
 	return (0);
 }

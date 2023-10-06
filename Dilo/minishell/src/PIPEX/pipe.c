@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
 /*   Updated: 2023/10/05 22:03:42 by dilovancand      ###   ########.fr       */
+=======
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
+/*   Updated: 2023/10/06 15:19:06 by dcandan          ###   ########.fr       */
+>>>>>>> a7ae27d6c67bbcbd356bbdaae9cae4139e2fbc9c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +27,11 @@ void	pipe_or_not(t_crust *crust)
 		lanch_pipe(crust);
 	else
 		return ;
+<<<<<<< HEAD
 	print_lst_parsing(crust->lst_cmd->first);
+=======
+	//print_lst_parsing(crust->lst_cmd->first);
+>>>>>>> a7ae27d6c67bbcbd356bbdaae9cae4139e2fbc9c
 }
 
 void	wait_all_process(t_crust *crust)

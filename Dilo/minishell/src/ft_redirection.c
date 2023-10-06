@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/10/05 17:13:08 by dilovancand      ###   ########.fr       */
+/*   Created: 2023/10/06 16:57:21 by dcandan           #+#    #+#             */
+/*   Updated: 2023/10/06 16:57:24 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

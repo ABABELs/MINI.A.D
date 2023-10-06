@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/05 21:24:31 by dilovancand      ###   ########.fr       */
+=======
+/*   Updated: 2023/10/06 15:37:58 by dcandan          ###   ########.fr       */
+>>>>>>> a7ae27d6c67bbcbd356bbdaae9cae4139e2fbc9c
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/05 15:41:19 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/06 15:40:06 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_isbuiltins(t_core *core)
 			return (1);
 		else if (ft_strncmp("pwd", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("export", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strcmp("export", (*core->tab)) == 0)
 			return (1);
-		else if (ft_strncmp("unset", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strcmp("unset", (*core->tab)) == 0)
 			return (1);
 		else if (ft_strncmp("env", (*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);

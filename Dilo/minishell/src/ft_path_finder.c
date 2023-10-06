@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 16:54:32 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:27:09 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_path_size(char *str)
 
 	a = 0;
 	b = 0;
-	while (str[a] && str[a] != '$')
+	while ((str[a] && str[a] != '$') || (str[a] == '$' && str[a + 1] == '?'))
 		a++;
 	if (str[a] == '$')
 	{
@@ -108,7 +108,6 @@ static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 		pathing->final = ft_strjoin(pathing->string1, pathing->pathion);
 		pathing->final = ft_strjoin(pathing->final, pathing->string2);
 	}
-	//free(pathing->pathifik);
 	free(pathing->pathion);
 	free(pathing->string2);
 	return (pathing->final);
@@ -141,7 +140,7 @@ char	*ft_print_path(char *str, t_pathport *path, t_crust *crust)
 			path->c = path->final[a];
 			path->f = 1;
 		}
-		if (path->final[a] == '$')
+		if (path->final[a] == '$' && path->final[a + 1] != '?')
 			if (path->c != 39)
 				path->final = ft_return_path(path, a, crust);
 		if (!path->final)
