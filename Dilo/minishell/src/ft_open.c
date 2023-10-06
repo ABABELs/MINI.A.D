@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 20:45:56 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/06 14:34:22 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static int	ft_open_rout(t_core *cmd_core, t_core *is_fd)
 	fd = open(is_fd->str, O_CREAT | O_TRUNC | O_RDWR, S_IRUSR
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
+	{
+		cmd_core->outfile = -1;
 		return (-1);
+	}
 	else
 		cmd_core->outfile = fd;
 	return (0);
@@ -31,7 +34,10 @@ static int	ft_open_rin(t_core *cmd_core, t_core *is_fd)
 
 	fd = open(is_fd->str, O_RDONLY);
 	if (fd < 0)
+	{
+		cmd_core->infile = -1;
 		return (-1);
+	}
 	else
 		cmd_core->infile = fd;
 	return (0);
@@ -44,7 +50,10 @@ static int	ft_open_append(t_core *cmd_core, t_core *is_fd)
 	fd = open(is_fd->str, O_CREAT | O_RDWR, S_IRUSR
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
+	{
+		cmd_core->outfile = -1;
 		return (-1);
+	}
 	else
 		cmd_core->outfile = fd;
 	return (0);

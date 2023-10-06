@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 10:28:25 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/06 14:04:21 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	no_pipe(const char *str, char **env)
 	ft_heredoc(crust->lst_cmd);
 	env_var_expension(crust, crust->lst_cmd->first);
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
-	(ft_open_fd(crust->lst_cmd), join_the_pipe(crust));
+	(join_the_pipe(crust), ft_open_fd(crust->lst_cmd));
 	(pipe_or_not(crust), last_exit_code(crust->lst_cmd->first));
 }
 
