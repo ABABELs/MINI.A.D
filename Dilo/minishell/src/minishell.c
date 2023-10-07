@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 14:04:21 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 14:54:32 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ static void	no_pipe(const char *str, char **env)
 	if (!crust)
 		return ;
 	tab = ft_minisplit(crust->input);
-	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
 	if (!tab || !tab[0])
 		return ;
+	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
 	pipe_syntax_checker(crust, crust->lst_cmd->first);
 	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
 		return ;
@@ -83,6 +83,8 @@ static void	no_pipe(const char *str, char **env)
 	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
 	(join_the_pipe(crust), ft_open_fd(crust->lst_cmd));
 	(pipe_or_not(crust), last_exit_code(crust->lst_cmd->first));
+	ft_free_array(tab);
+	ft_free_crust(crust);
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

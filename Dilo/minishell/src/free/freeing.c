@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:47:54 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/04 10:55:22 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/07 14:50:50 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_free_array(char **array)
 	if (!array)
 		return ;
 	while (array[++i])
+	{
 		free(array[i]);
+	}
+	free(array[i]);
 	free(array);
 }
 
