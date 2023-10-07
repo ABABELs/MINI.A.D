@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 14:27:09 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 16:27:24 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 		if (!pathing->pathion)
 			return (NULL);
 		ft_split_path(pathing->final, &pathing, a);
+		free(pathing->final);
 		pathing->final = ft_strjoin(pathing->string1, pathing->pathion);
 		pathing->final = ft_strjoin(pathing->final, pathing->string2);
 	}
@@ -125,9 +126,9 @@ char	*ft_print_path(char *str, t_pathport *path, t_crust *crust)
 	int			a;
 
 	a = -1;
-	path->final = str;
-	path->f = 0;
-	path->c = 0;
+	path->final = ft_strdup(str);
+	if (!path->final)
+		return (NULL);
 	while (path->final[++a])
 	{
 		if (path->f == 1 && path->final[a] == path->c)

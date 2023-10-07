@@ -6,7 +6,11 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/06 17:56:30 by dilovancand      ###   ########.fr       */
+=======
+/*   Updated: 2023/10/07 17:34:33 by dcandan          ###   ########.fr       */
+>>>>>>> 743852cc651f2bb2949b1461fd0b0c3ddb6de348
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +20,11 @@ extern int	g_mini_sig;
 
 void	pipe_or_not(t_crust *crust)
 {
+	// print_lst_parsing(crust->lst_cmd->first);
 	if (ft_count_cmds(crust) > 0)
 		lanch_pipe(crust);
 	else
 		return ;
-	//print_lst_parsing(crust->lst_cmd->first);
 }
 
 void	wait_all_process(t_crust *crust)

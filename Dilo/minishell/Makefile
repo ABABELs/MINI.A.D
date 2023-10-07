@@ -6,7 +6,7 @@
 #    By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/10/04 14:41:52 by dcandan          ###   ########.fr        #
+#    Updated: 2023/10/07 14:53:23 by dcandan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 			src/BUILTINS/pwd.c src/BUILTINS/unset.c src/BUILTINS/builtins_utils.c \
 			src/PIPEX/pipe.c src/PIPEX/print_list.c src/PIPEX/pipe_setup.c src/PIPEX/pipe_utils.c \
 			src/ft_error.c src/ft_print_error_msg.c src/ft_open_utils.c \
-			src/free/freeing.c src/ft_open.c \
+			src/free/freeing.c src/ft_open.c src/free/ft_free_crust.c \
 			src/ft_env.c src/ft_env_utils.c \
 			src/ft_parsing_utils_more.c \
 			

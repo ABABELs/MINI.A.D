@@ -6,14 +6,19 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 13:23:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 13:26:11 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 16:36:34 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	ft_alloc_core2(t_core **core)
+static t_core	*ft_alloc_core2(t_core **core)
 {
+	if (!(*core)->str)
+	{
+		free(*core);
+		return (NULL);
+	}
 	(*core)->infile = STDIN_FILENO;
 	(*core)->outfile = STDOUT_FILENO;
 	(*core)->pathed = NULL;
@@ -23,6 +28,7 @@ static void	ft_alloc_core2(t_core **core)
 	(*core)->to_delete = 0;
 	(*core)->tab = NULL;
 	(*core)->child = 0;
+	return (*core);
 }
 
 //malloc et remplie chaque core en définissant son type
@@ -34,25 +40,24 @@ static t_core	*ft_alloc_core(char **tab, int a, t_crust *crust)
 	core = malloc(sizeof(t_core));
 	if (!core)
 		return (NULL);
-	core->str = tab[a];
-	if (ft_ispth(core->str) == 1)
-	{	
-		path = malloc(sizeof(t_pathport));
-		if (!path)
-		{
-			free(core);
-			return (NULL);
-		}
-		core->str = ft_print_path(core->str, path, crust);
-		free(path);
-	}
-	ft_alloc_core2(&core);
+	core->str = ft_strdup(tab[a]);
 	if (!core->str)
 	{
 		free(core);
 		return (NULL);
 	}
-	return (core);
+	if (ft_ispth(core->str) == 1)
+	{	
+		path = malloc(sizeof(t_pathport));
+		if (!path)
+			return (free(core->str), free(core), NULL);
+			path->f = 0;
+			path->c = 0;
+		free(core->str);
+		core->str = ft_print_path(tab[a], path, crust);
+		free(path);
+	}
+	return (ft_alloc_core2(&core));
 }
 
 //créer une liste chainée de core dans mantle

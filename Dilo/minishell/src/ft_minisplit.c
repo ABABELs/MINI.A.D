@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 14:46:05 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 17:03:50 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char	**ft_minisplit(char const *s)
 	tab_nb = 0;
 	real_tab = 0;
 	a = 0;
-	if (!s)
+	if (!s || ft_strlen(s) == 0)
 		return (NULL);
 	real_tab = ft_count_tab((char *)s, a, tab_nb);
 	real_tab = ft_redir_count((char *)s, '|', a, tab_nb) + real_tab;
