@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/07 17:20:20 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 17:38:13 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	(void)env;
 	signal(SIGINT, ft_sigint_handler);
 	signal(SIGQUIT, ft_sigquit_handler);
 	ft_minishell(env);
