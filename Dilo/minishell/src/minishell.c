@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/07 14:54:32 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 17:20:20 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,20 @@ static t_crust	*malloc_crust(const char *str, char **env)
 	if (!crust || !crust->lst_cmd)
 		return (NULL);
 	crust->input = (char *)str;
-	crust->syntax_error = 0;
 	crust->env = array_dup(env);
+	if (!crust->env)
+		return (free(crust->lst_cmd), free(crust), NULL);
 	get_env = ft_getenv(crust, ft_strdup("PATH"));
+	if (!get_env)
+		return (free(crust->lst_cmd), free(crust->env), free(crust), NULL);
 	crust->path = ft_split(get_env, ':');
+	if (!crust->path)
+		return (free(crust->lst_cmd), free(crust->env), free(crust),
+			free(get_env), NULL);
+	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
+	if (!crust->root_path)
+		return (free(crust->lst_cmd), free(crust->env), free(crust),
+			free(get_env), free(crust->path), NULL);
 	free(get_env);
 	return (crust);
 }
@@ -68,10 +78,10 @@ static void	no_pipe(const char *str, char **env)
 	crust = malloc_crust(str, env);
 	if (!crust)
 		return ;
+	crust->syntax_error = 0;
 	tab = ft_minisplit(crust->input);
 	if (!tab || !tab[0])
-		return ;
-	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
+		return (ft_free_crust(crust));
 	pipe_syntax_checker(crust, crust->lst_cmd->first);
 	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:47:54 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/07 14:50:50 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 16:23:35 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ void	ft_free_array(char **array)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (!array)
 		return ;
-	while (array[++i])
+	while (array[i])
 	{
 		free(array[i]);
+		i++;
 	}
 	free(array[i]);
 	free(array);

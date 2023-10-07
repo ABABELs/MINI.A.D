@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:51:02 by dcandan           #+#    #+#             */
-/*   Updated: 2023/10/07 15:28:00 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/07 16:55:43 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	ft_free_core(t_core *core)
 {
+	if (core->type == REDIR_IN || core->type == REDIR_OUT
+		|| core->type == APPEND || core->type == HERDOC || core->type == FD)
+		free(core->str);
 	if (core->tab)
 		ft_free_array(core->tab);
 	free(core->pathed);
@@ -44,10 +47,17 @@ static void	ft_free_mantle(t_mantle *mantle)
 
 void	ft_free_crust(t_crust *crust)
 {
-	ft_free_mantle(crust->lst_cmd);
-	free(crust->lst_cmd);
-	ft_free_array(crust->path);
-	ft_free_array(crust->env);
-	free(crust->root_path);
+	if (crust->lst_cmd->first)
+		ft_free_mantle(crust->lst_cmd);
+	if (crust->lst_cmd)
+		free(crust->lst_cmd);
+	if (crust->path)
+		ft_free_array(crust->path);
+	if (crust->env)
+		ft_free_array(crust->env);
+	if (!crust->root_path)
+		;
+	else
+		free(crust->root_path);
 	free(crust);
 }
