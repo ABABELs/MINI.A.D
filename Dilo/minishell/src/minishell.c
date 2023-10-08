@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/08 14:23:50 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/08 14:29:34 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	remove_quotes(t_mantle *mantle)
 	}
 	return (0);
 }
-
 
 static t_crust	*malloc_crust(const char *str, char **env)
 {
