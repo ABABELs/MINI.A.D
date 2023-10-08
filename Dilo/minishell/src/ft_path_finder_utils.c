@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_path_finder_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 20:14:56 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/05 15:13:29 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/08 14:19:03 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 extern int	g_mini_sig;
 
-void	last_exit_code(t_list *list)
+void	last_exit_code(t_crust *crust)
 {
 	t_core	*core;
+	t_list	*list;
 
 	core = NULL;
+	list = crust->lst_cmd->first;
 	if (!list)
 		g_mini_sig = 0;
 	while (list)

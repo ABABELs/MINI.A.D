@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prepforexec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:54:17 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 12:52:16 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/08 14:13:50 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char	**ft_cmd_tab(t_list *list, int tab_nb)
 	return (ft_cmd_tab2(temp, a, tab));
 }
 
-void	ft_joincmd(t_mantle *mantle)
+int	ft_joincmd(t_mantle *mantle)
 {
 	t_list	*list;
 	t_core	*core;
@@ -87,6 +87,8 @@ void	ft_joincmd(t_mantle *mantle)
 		{
 			tab_nb = ft_countcmd(list);
 			core->tab = ft_cmd_tab(list, tab_nb);
+			if (!core->tab)
+				return (-1);
 			while (core->type == CMD && list)
 			{
 				list = list->next;
@@ -97,4 +99,5 @@ void	ft_joincmd(t_mantle *mantle)
 		else
 			list = list->next;
 	}
+	return (0);
 }

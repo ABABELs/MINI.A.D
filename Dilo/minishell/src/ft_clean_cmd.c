@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:42:08 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/14 15:58:09 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/08 13:58:43 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ static char	*ft_cmdmalloc(char *str)
 }
 
 //Copie la chaine de charactère
-static char	*ft_clean_copy(char *str, int a, char c)
+static char	*ft_clean_copy(char *str, int a, char c, int b)
 {
-	int		b;
 	char	*tmp;
 
 	tmp = ft_cmdmalloc(str);
-	b = 0;
+	if (!tmp)
+		return (NULL);
 	while (str[a + b])
 	{
 		if (str[a + b] == 34 || str[a + b] == 39 || str[a + b] == ' ')
@@ -88,14 +88,18 @@ char	*ft_cmdisgood(char *str)
 	char	*tmp;
 	int		a;
 	char	c;
+	int		b;
 
 	a = 0;
 	c = 0;
+	b = 0;
 	if (ft_isquote(str) == 1)
 	{
 		while ((str[a] < '!' || str[a] > '~') && str[a])
 			a++;
-		tmp = ft_clean_copy(str, a, c);
+		tmp = ft_clean_copy(str, a, c, b);
+		if (!tmp)
+			return (NULL);
 		return (tmp);
 	}
 	else

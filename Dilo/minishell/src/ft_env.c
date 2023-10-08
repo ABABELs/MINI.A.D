@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:36:04 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/07 16:08:07 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/08 14:04:25 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ char	*ft_getenv(t_crust *crust, char *find_env)
 	return (NULL);
 }
 
-void	env_var_expension(t_crust *crust, t_list *lst_cmd)
+void	env_var_expension(t_crust *crust)
 {
 	t_core	*core;
+	t_list	*lst_cmd;
 
+	lst_cmd = crust->lst_cmd->first;
 	while (lst_cmd)
 	{
 		core = (t_core *)lst_cmd->content;

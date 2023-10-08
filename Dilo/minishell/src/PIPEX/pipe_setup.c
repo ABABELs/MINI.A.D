@@ -6,7 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/06 17:56:29 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/08 14:16:27 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_core	*find_prev(t_list *list)
 	return (content);
 }
 
-void	join_the_pipe(t_crust *crust)
+int	join_the_pipe(t_crust *crust)
 {
 	t_list	*list;
 	t_core	*prev;
@@ -45,7 +45,7 @@ void	join_the_pipe(t_crust *crust)
 			if (list->next)
 				next = ((t_core *)list->next->content);
 			if (pipe(((t_core *)list->content)->fdp) == -1)
-				return (perror("pipe failed"));
+				return (perror("pipe failed"), -1);
 			prev->outfile = current->fdp[1];
 			current->infile = current->fdp[1];
 			next->infile = current->fdp[0];
@@ -53,6 +53,7 @@ void	join_the_pipe(t_crust *crust)
 		}
 		list = list->next;
 	}
+	return (0);
 }
 
 int	ft_slash(char *str)

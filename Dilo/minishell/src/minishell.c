@@ -6,11 +6,7 @@
 /*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/06 18:11:38 by dilovancand      ###   ########.fr       */
-=======
-/*   Updated: 2023/10/07 17:38:13 by dcandan          ###   ########.fr       */
->>>>>>> 743852cc651f2bb2949b1461fd0b0c3ddb6de348
+/*   Updated: 2023/10/08 14:23:50 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +19,7 @@ extern int	g_mini_sig;
 	retire les quotes qui ne sont pas dans d'autres quotes
 	dans la chaine de charactère
 */
-static void	remove_quotes(t_mantle *mantle)
+static int	remove_quotes(t_mantle *mantle)
 {
 	t_list	*list;
 	t_core	*core;
@@ -34,16 +30,20 @@ static void	remove_quotes(t_mantle *mantle)
 	{
 		core = (t_core *)list->content;
 		if (!core->str)
-			return ;
+			return (-1);
 		if (ft_isquote(core->str) == 1)
 		{
 			str = ft_cmdisgood(core->str);
+			if (!str)
+				return (-1);
 			free(core->str);
 			core->str = str;
 		}
 		list = list->next;
 	}
+	return (0);
 }
+
 
 static t_crust	*malloc_crust(const char *str, char **env)
 {
@@ -86,19 +86,20 @@ static void	no_pipe(const char *str, char **env)
 	tab = ft_minisplit(crust->input);
 	if (!tab || !tab[0])
 		return (ft_free_crust(crust));
-	pipe_syntax_checker(crust, crust->lst_cmd->first);
 	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
-		return ;
+		return (ft_free_crust(crust));
 	ft_type_set(crust->lst_cmd);
 	if (ft_after_redir(crust->lst_cmd) == -1)
-		return ;
-	ft_heredoc(crust->lst_cmd);
-	env_var_expension(crust, crust->lst_cmd->first);
-	(remove_quotes(crust->lst_cmd), ft_joincmd(crust->lst_cmd));
-	(join_the_pipe(crust), ft_open_fd(crust->lst_cmd));
-	(pipe_or_not(crust), last_exit_code(crust->lst_cmd->first));
-	ft_free_array(tab);
-	ft_free_crust(crust);
+		return (ft_free_crust(crust));
+	(ft_heredoc(crust->lst_cmd), env_var_expension(crust));
+	if (remove_quotes(crust->lst_cmd) == -1)
+		return (ft_free_crust(crust));
+	if (ft_joincmd(crust->lst_cmd) == -1)
+		return (ft_free_crust(crust));
+	if (join_the_pipe(crust) == -1)
+		return (ft_free_crust(crust));
+	(ft_open_fd(crust->lst_cmd), pipe_or_not(crust), last_exit_code(crust));
+	(ft_free_array(tab), ft_free_crust(crust));
 }
 
 //boucle infini, affiche le prompt et gère les arguments envoyer

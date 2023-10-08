@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/07 14:52:54 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/08 14:19:00 by dilovancand      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_pathport
 void	ft_minishell(char **env);
 
 //cmd cleaner
-void	ft_joincmd(t_mantle *mantle);
+int		ft_joincmd(t_mantle *mantle);
 char	*ft_cmdisgood(char *str);
 
 //minisplit
@@ -146,7 +146,7 @@ void	sig_handler(int sig);
 
 //pipe
 void	pipe_or_not(t_crust *crust);
-void	join_the_pipe(t_crust *crust);
+int		join_the_pipe(t_crust *crust);
 void	run_my_child(t_core *cmd, t_crust *crust);
 void	lanch_pipe(t_crust *crust);
 void	exec_my_pipe(t_core *core, t_crust *crust);
@@ -164,7 +164,7 @@ int		ft_count_cmds(t_crust *crust);
 void	pipe_syntax_checker(t_crust *crust, t_list *list);
 
 //exit_code
-void	last_exit_code(t_list *list);
+void	last_exit_code(t_crust *crust);
 
 //builtins
 void	cd(t_core *core, t_crust *crust);
@@ -221,7 +221,7 @@ void	ft_readdoc(t_core *core, t_list *list);
 
 //env
 char	*ft_getenv(t_crust *crust, char *find_env);
-void	env_var_expension(t_crust *crust, t_list *lst_cmd);
+void	env_var_expension(t_crust *crust);
 int		is_env_var(t_core *core);
 char	*cut_to_getenv(int *i, char *tmp, t_core *core, t_crust *crust);
 void	env_to_string(t_crust *crust, t_core *core);
