@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:21:55 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 12:31:14 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 13:50:48 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ char	**free_allin(char **tab, int a)
 {
 	if (!tab)
 		return (NULL);
-	if (!tab[a])
-	{
-		free(tab);
-		return (NULL);
-	}
 	while (0 <= a)
 	{
 		free(tab[a]);

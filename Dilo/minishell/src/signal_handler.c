@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 22:38:28 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/04 14:27:03 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 13:58:28 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_sigint_handler(int si)
 }
 
 //redirige le signal sigquit pour qu'elle ne fasse rien (à tester)
-void	ft_sigquit_handler(int si)
+void	ft_sigquit_handler(void)
 {
-	(void)si;
+	signal(SIGQUIT, SIG_IGN);
 }
 
 //added
