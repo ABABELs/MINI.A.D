@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 22:09:10 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/07 16:27:24 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:23:13 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static char	*ft_return_path(t_pathport *pathing, int a, t_crust *crust)
 		pathing->pathifik = ft_preprint(pathing->final, b, a);
 		pathing->pathion = ft_getenv(crust, pathing->pathifik);
 		if (!pathing->pathion)
-			return (NULL);
+			return (pathing->final);
 		ft_split_path(pathing->final, &pathing, a);
 		free(pathing->final);
 		pathing->final = ft_strjoin(pathing->string1, pathing->pathion);

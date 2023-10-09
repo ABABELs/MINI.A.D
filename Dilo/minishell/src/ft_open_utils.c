@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:52:32 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 17:10:00 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:53:23 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_core	*ft_find_cmd(t_list *list)
 	while (tmp)
 	{
 		core = (t_core *)tmp->content;
-		if (core->type == CMD && core->tab)
+		if (core->type == CMD)
 			return (core);
 		else if (tmp->next)
 			tmp = tmp->next;

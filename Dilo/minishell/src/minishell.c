@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 17:09:00 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:16:40 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static void	malloc_crust_again(char *str, t_crust *crust)
 	if (!crust->lst_cmd)
 		return ;
 	crust->lst_cmd->first = NULL;
-	free(crust->path);
 	get_env = ft_getenv(crust, ft_strdup("PATH"));
-	free(crust->root_path);
+	ft_free_array(crust->path);
 	crust->path = ft_split(get_env, ':');
+	free(crust->root_path);
 	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
 	free(get_env);
 }
@@ -97,17 +97,17 @@ static void	no_pipe(char *str, t_crust *crust)
 	if (!tab || !tab[0])
 		return (ft_free_crust(crust, 0));
 	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
-		return (ft_free_array(tab));
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	ft_type_set(crust->lst_cmd);
 	if (ft_after_redir(crust->lst_cmd) == -1)
-		return (ft_free_array(tab));
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	(ft_heredoc(crust->lst_cmd), env_var_expension(crust));
 	if (remove_quotes(crust->lst_cmd) == -1)
-		return (ft_free_array(tab));
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	if (ft_joincmd(crust->lst_cmd) == -1)
-		return (ft_free_array(tab));
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	if (join_the_pipe(crust) == -1)
-		return (ft_free_array(tab));
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	if (ft_open_fd(crust->lst_cmd) == -1)
 		return (ft_free_array(tab), ft_free_crust(crust, 0));
 	(pipe_or_not(crust), last_exit_code(crust));
@@ -122,7 +122,7 @@ void	ft_minishell(char **env)
 
 	crust = malloc_crust(env);
 	if (!crust)
-		return ;
+		return (ft_free_crust(crust, 1));
 	while (1)
 	{
 		str = readline("minishell $ ");
