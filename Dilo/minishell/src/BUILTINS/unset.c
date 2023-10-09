@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/05 15:44:07 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/09 14:31:09 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ char	**remove_env_var(char **env, int index)
 	while (env[i])
 	{
 		if (i != index)
-			array[++j] = env[i];
+			array[++j] = ft_strdup(env[i]);
 		i++;
 	}
 	array[j + 1] = NULL;
+	ft_free_array(env);
 	return (array);
 }
 
@@ -69,6 +70,9 @@ void	unset(t_core *core, t_crust *crust)
 		index = find_env_var(crust, core->tab[i]);
 		env = ft_getenv(crust, ft_strdup(core->tab[i]));
 		if (env != NULL)
+		{
 			crust->env = remove_env_var(crust->env, index);
+		}
+		free(env);
 	}
 }

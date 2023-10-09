@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 13:58:53 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 14:00:56 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		ft_path_strlen(char *str, int b);
 
 //signal handler
 void	ft_sigint_handler(int si);
-void	ft_sigquit_handler(void);
+void	ft_sigquit_handler(int si);
 void	ft_signal_in_fork(void);
 void	ft_signal(void);
 void	sig_handler(int sig);
