@@ -3,16 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/07 21:59:11 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/09 12:57:56 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_mini_sig;
+
+static t_list	*ft_lstlast_cmd(t_list *lst)
+{
+	t_core	*core;
+	t_list	*cmd_lst;
+
+	if (!lst)
+		return (NULL);
+	core = (t_core *)lst->content;
+	if (core->type == CMD)
+		cmd_lst = lst;
+	while (lst->next)
+	{
+		core = (t_core *)lst->content;
+		if (core->type == CMD)
+			cmd_lst = lst;
+		lst = lst->next;
+	}
+	return (cmd_lst);
+}
 
 void	pipe_or_not(t_crust *crust)
 {
@@ -31,7 +51,7 @@ void	wait_all_process(t_crust *crust)
 
 	if (!crust->lst_cmd)
 		return ;
-	list = ft_lstlast(crust->lst_cmd->first);
+	list = ft_lstlast_cmd(crust->lst_cmd->first);
 	core = (t_core *)list->content;
 	while (list && !ft_isbuiltins(core))
 	{
