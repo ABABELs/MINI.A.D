@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:58:42 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 11:40:30 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 16:06:41 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int	ft_opos(t_mantle *mantle)
 	return (0);
 }
 
-static int	ft_after_redirr(t_mantle *mantle)
+static int	
+ft_after_redirr(t_mantle *mantle)
 {
 	t_list	*list;
 	t_core	*c;

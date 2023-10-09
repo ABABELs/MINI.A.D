@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 15:58:03 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:09:00 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,24 @@ static int	remove_quotes(t_mantle *mantle)
 	return (0);
 }
 
+static void	malloc_crust_again(char *str, t_crust *crust)
+{
+	char		*get_env;
+
+	crust->input = (char *)str;
+	crust->syntax_error = 0;
+	crust->lst_cmd = malloc(sizeof(t_mantle));
+	if (!crust->lst_cmd)
+		return ;
+	crust->lst_cmd->first = NULL;
+	free(crust->path);
+	get_env = ft_getenv(crust, ft_strdup("PATH"));
+	free(crust->root_path);
+	crust->path = ft_split(get_env, ':');
+	crust->root_path = ft_getenv(crust, ft_strdup("HOME"));
+	free(get_env);
+}
+
 static t_crust	*malloc_crust(char **env)
 {
 	char		*get_env;
@@ -74,12 +92,7 @@ static void	no_pipe(char *str, t_crust *crust)
 {
 	char		**tab;
 
-	crust->input = (char *)str;
-	crust->syntax_error = 0;
-	crust->lst_cmd = malloc(sizeof(t_mantle));
-	if (!crust->lst_cmd)
-		return ;
-	crust->lst_cmd->first = NULL;
+	malloc_crust_again(str, crust);
 	tab = ft_minisplit(crust->input);
 	if (!tab || !tab[0])
 		return (ft_free_crust(crust, 0));
@@ -95,7 +108,9 @@ static void	no_pipe(char *str, t_crust *crust)
 		return (ft_free_array(tab));
 	if (join_the_pipe(crust) == -1)
 		return (ft_free_array(tab));
-	(ft_open_fd(crust->lst_cmd), pipe_or_not(crust), last_exit_code(crust));
+	if (ft_open_fd(crust->lst_cmd) == -1)
+		return (ft_free_array(tab), ft_free_crust(crust, 0));
+	(pipe_or_not(crust), last_exit_code(crust));
 	(ft_free_array(tab), ft_free_crust(crust, 0));
 }
 

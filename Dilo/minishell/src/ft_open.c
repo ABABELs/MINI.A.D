@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 16:50:28 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:06:02 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ static int	ft_open_rout(t_core *cmd_core, t_core *is_fd)
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
 	{
-		cmd_core->outfile = -1;
+		if (cmd_core)
+			cmd_core->outfile = -1;
 		return (-1);
 	}
-	else
+	else if (cmd_core)
 		cmd_core->outfile = fd;
 	return (0);
 }
@@ -35,10 +36,11 @@ static int	ft_open_rin(t_core *cmd_core, t_core *is_fd)
 	fd = open(is_fd->str, O_RDONLY);
 	if (fd < 0)
 	{
-		cmd_core->infile = -1;
+		if (cmd_core)
+			cmd_core->infile = -1;
 		return (-1);
 	}
-	else
+	else if (cmd_core)
 		cmd_core->infile = fd;
 	return (0);
 }
@@ -51,27 +53,28 @@ static int	ft_open_append(t_core *cmd_core, t_core *is_fd)
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd < 0)
 	{
-		cmd_core->outfile = -1;
+		if (cmd_core)
+			cmd_core->outfile = -1;
 		return (-1);
 	}
-	else
+	else if (cmd_core)
 		cmd_core->outfile = fd;
 	return (0);
 }
 
 static int	ft_check_all_fd(t_core *core, t_core *cmd_core, t_core *is_fd)
 {
-	if (core->type == REDIR_IN && cmd_core && is_fd->type == FD)
+	if (core->type == REDIR_IN && is_fd->type == FD)
 	{
 		if (ft_open_rin(cmd_core, is_fd) == -1)
 			return (-1);
 	}
-	else if (core->type == REDIR_OUT && cmd_core && is_fd->type == FD)
+	else if (core->type == REDIR_OUT && is_fd->type == FD)
 	{
 		if (ft_open_rout(cmd_core, is_fd) == -1)
 			return (-2);
 	}
-	else if (core->type == APPEND && cmd_core && is_fd->type == FD)
+	else if (core->type == APPEND && is_fd->type == FD)
 	{
 		if (ft_open_append(cmd_core, is_fd) == -1)
 			return (-3);
@@ -96,7 +99,8 @@ int	ft_open_fd(t_mantle *mantle)
 			if (ft_redir_error(is_fd->str, list,
 					ft_check_all_fd(core, cmd_core, is_fd)) != 0)
 				return (-1);
-		cmd_core->exit_code = 0;
+		if (cmd_core)
+			cmd_core->exit_code = 0;
 		if (core->tab)
 			cmd_core = ft_find_cmd(list);
 		if (!cmd_core)

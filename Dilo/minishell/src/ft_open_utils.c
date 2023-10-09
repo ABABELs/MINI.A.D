@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:52:32 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 16:56:40 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:10:00 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ int	ft_redir_error(char *str, t_list *list, int error)
 	{
 		if (error == -1)
 			return (ft_message("minishell: ", str,
-					": No such file or directory\n"), exit(1), 1);
+					": No such file or directory\n"), 1);
 		else if (error == -2)
 			return (ft_message("minishell: ", str,
-					": Permission denied\n"), exit(1), 1);
+					": Permission denied\n"), 1);
 		else if (error == -3)
 			return (ft_message("minishell: ", str,
-					": Permission denied\n"), exit(1), 1);
+					": Permission denied\n"), 1);
 	}
 	else if (ft_find_pipe(list) == 1 && ft_find_redir(list) == 1)
 		return (ft_redirmescouilles(str, error));
