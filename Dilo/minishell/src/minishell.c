@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 15:55:15 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:58:03 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	no_pipe(char *str, t_crust *crust)
 	crust->lst_cmd->first = NULL;
 	tab = ft_minisplit(crust->input);
 	if (!tab || !tab[0])
-		return (free(crust->input));
+		return (ft_free_crust(crust, 0));
 	if (ft_alloc_mantle(tab, crust->lst_cmd, crust) == -1)
 		return (ft_free_array(tab));
 	ft_type_set(crust->lst_cmd);
