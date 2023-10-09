@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/09 17:14:54 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:21:54 by aabel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static const char	*l(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+	return (str);
+}
 
 int	ft_isbuiltins(t_core *core)
 {
@@ -23,19 +36,19 @@ int	ft_isbuiltins(t_core *core)
 	}
 	if (core->tab && *core->tab)
 	{
-		if (ft_strncmp("echo", (*core->tab), ft_strlen((*core->tab))) == 0)
+		if (ft_strncmp("echo", l(*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("cd", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("cd", l(*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("pwd", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("pwd", l(*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strcmp("export", (*core->tab)) == 0)
+		else if (ft_strcmp("export", l(*core->tab)) == 0)
 			return (1);
-		else if (ft_strcmp("unset", (*core->tab)) == 0)
+		else if (ft_strcmp("unset", l(*core->tab)) == 0)
 			return (1);
-		else if (ft_strncmp("env", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("env", l(*core->tab), ft_strlen((*core->tab))) == 0)
 			return (1);
-		else if (ft_strncmp("exit", (*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strcmp("exit", l(*core->tab)) == 0)
 			return (1);
 	}
 	return (0);
@@ -92,3 +105,4 @@ void	poop(t_core *core, t_crust *crust)
 	if (!core->tab[1])
 		ft_export_no_args(crust, core);
 }
+
