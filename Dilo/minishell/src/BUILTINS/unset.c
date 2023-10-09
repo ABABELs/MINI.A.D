@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:14:43 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/09 14:31:09 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 14:41:04 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**remove_env_var(char **env, int index)
 
 	i = 0;
 	j = -1;
-	array = malloc(sizeof(char *) * ft_arraylen(env));
+	array = malloc(sizeof(char *) * ft_arraylen(env) + 1);
 	while (env[i])
 	{
 		if (i != index)
@@ -62,17 +62,19 @@ void	unset(t_core *core, t_crust *crust)
 	int		index;
 	char	*env;
 
-	i = 0;
+	i = -1;
 	index = 0;
 	env = NULL;
 	while (core->tab[++i])
 	{
 		index = find_env_var(crust, core->tab[i]);
 		env = ft_getenv(crust, ft_strdup(core->tab[i]));
-		if (env != NULL)
+		if (!env)
+			;
+		else
 		{
 			crust->env = remove_env_var(crust->env, index);
+			free(env);
 		}
-		free(env);
 	}
 }

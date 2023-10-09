@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 14:00:56 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:48:49 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void	ft_free_array(char **array);
 void	node_to_del(t_mantle *lst_cmd);
 void	remove_node(t_list **head, t_list *node_to_remove);
 int		is_node_to_del(t_list *lst);
-void	ft_free_crust(t_crust *crust, char **tab);
+void	ft_free_crust(t_crust *crust, int a);
 
 //herdoc
 void	ft_heredoc(t_mantle *mantle);

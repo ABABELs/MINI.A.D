@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:51:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/05 14:56:27 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:52:16 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	export(t_crust *crust, t_core *core)
 	int	is_syntax;
 	int	is_env;
 
-	i = 0;
+	i = -1;
 	is_syntax = 0;
 	is_env = 0;
 	if (core->outfile != 1)
@@ -98,7 +98,7 @@ void	export(t_crust *crust, t_core *core)
 					ft_substr(core->tab[i], 0, is_syntax - 1));
 			if (is_env == 0 && !ft_env_exist(crust, core->tab[i]))
 			{
-				crust->env = array_join(crust->env, ft_strdup(core->tab[i]));
+				crust->env = array_join(crust->env, core->tab[i]);
 				core->exit_code = 0;
 			}
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:03:50 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/05 14:57:50 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:53:02 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	env(t_crust *crust, t_core *core)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (!crust->env && !(*crust->env))
 		return ;
-	while (crust->env[++i])
+	while (crust->env[i])
 	{
 		ft_putstr_fd(crust->env[i], core->outfile);
+		i++;
 	}
 }
 
@@ -107,7 +108,6 @@ int	ft_env_exist(t_crust *crust, char *env)
 			len++;
 		if (!ft_strncmp(env, crust->env[i], len + 1))
 		{
-			free(crust->env[i]);
 			crust->env[i] = ft_strdup(env);
 			return (1);
 		}

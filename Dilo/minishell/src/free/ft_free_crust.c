@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:51:02 by dcandan           #+#    #+#             */
-/*   Updated: 2023/10/09 12:10:54 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:48:36 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,25 @@ static void	ft_free_mantle(t_mantle *mantle)
 	free(list);
 }
 
-void	ft_free_crust(t_crust *crust, char **tab)
+void	ft_free_crust(t_crust *crust, int a)
 {
-	//if (tab)
-		ft_free_array(tab);
-	if (crust->lst_cmd->first)
-		ft_free_mantle(crust->lst_cmd);
-	if (crust->lst_cmd)
-		free(crust->lst_cmd);
-	if (crust->path)
-		ft_free_array(crust->path);
-	if (crust->env)
-		ft_free_array(crust->env);
-	if (!crust->root_path)
-		;
+	if (a == 0)
+	{
+		if (crust->lst_cmd->first)
+			ft_free_mantle(crust->lst_cmd);
+		if (crust->lst_cmd)
+			free(crust->lst_cmd);
+	}
 	else
-		free(crust->root_path);
-	free(crust);
+	{
+		if (crust->path)
+			ft_free_array(crust->path);
+		if (crust->env)
+			ft_free_array(crust->env);
+		if (!crust->root_path)
+			;
+		else
+			free(crust->root_path);
+		free(crust);
+	}
 }
