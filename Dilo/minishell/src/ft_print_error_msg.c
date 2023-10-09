@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 17:15:18 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/06 15:32:55 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 12:35:44 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 
 extern int	g_mini_sig;
 
-int	ft_print_msg(int a, char *str)
+int	ft_print_msg(int a, char *str, int b)
 {
 	if (a == 1)
-		ft_printf("minishell: syntax error near unexpected token `%s'\n",
-			str);
+	{
+		if (str[0] == '|' && str[1] == '\0')
+			ft_message("minishell: syntax error near unexpected token `",
+				"|", "' \n");
+		if (str[0] == '|' && str[1] == '|')
+			ft_message("minishell: syntax error near unexpected token `",
+				"||", "' \n");
+		else
+			ft_message("minishell: syntax error near unexpected token `",
+				str, "' \n");
+	}
 	g_mini_sig = 2;
+	if (b == 1)
+		free(str);
 	return (-1);
 }
 

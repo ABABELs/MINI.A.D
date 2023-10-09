@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:51:02 by dcandan           #+#    #+#             */
-/*   Updated: 2023/10/07 16:55:43 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 12:10:54 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ static void	ft_free_mantle(t_mantle *mantle)
 	free(list);
 }
 
-void	ft_free_crust(t_crust *crust)
+void	ft_free_crust(t_crust *crust, char **tab)
 {
+	//if (tab)
+		ft_free_array(tab);
 	if (crust->lst_cmd->first)
 		ft_free_mantle(crust->lst_cmd);
 	if (crust->lst_cmd)

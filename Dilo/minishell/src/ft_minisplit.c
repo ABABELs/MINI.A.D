@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 22:28:59 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/07 17:03:50 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/09 12:35:51 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_threedirection(char *s, int a)
 	if (!rstr)
 		return (-1);
 	rstr = ft_ministrncpy(rstr, s, a, flag);
-	return (ft_print_msg(1, rstr));
+	return (ft_print_msg(1, rstr, 1));
 }
 
 //malloc et remplie la chaine de caractère 
@@ -73,7 +73,7 @@ static int	ft_redirjsp(char **tab, char *s, int letters, int a)
 		while (is_sep(s[letters + a]) == 2 && s[letters + a])
 		{
 			if (a >= 2)
-				return (ft_threedirection(s, letters + a));
+				return (*tab = NULL, ft_threedirection(s, letters + a));
 			a++;
 		}
 	}
@@ -82,7 +82,7 @@ static int	ft_redirjsp(char **tab, char *s, int letters, int a)
 		while (is_sep(s[letters + a]) == 3 && s[letters + a])
 		{
 			if (a > 0)
-				return (ft_threedirection(s, letters + a));
+				return (*tab = NULL, ft_threedirection(s, letters + a));
 			a++;
 		}
 	}
@@ -116,7 +116,7 @@ static char	**into_tab(char **tab, char const *s, int letters)
 		if (d != 0)
 		{
 			if (d == -1)
-				return (free_all(tab, (b - 1)));
+				return (free_allin(tab, (b - 1)));
 			letters = letters + d;
 		}
 	}
@@ -137,15 +137,14 @@ char	**ft_minisplit(char const *s)
 	a = 0;
 	if (!s || ft_strlen(s) == 0)
 		return (NULL);
+	if (is_sep(s[0]) == 3)
+		return (ft_print_msg(1, (char *)s, 0), NULL);
 	real_tab = ft_count_tab((char *)s, a, tab_nb);
 	real_tab = ft_redir_count((char *)s, '|', a, tab_nb) + real_tab;
 	real_tab = ft_redir_count((char *)s, '<', a, tab_nb) + real_tab;
 	real_tab = ft_redir_count((char *)s, '>', a, tab_nb) + real_tab;
 	tab = malloc(sizeof(char *) * (real_tab + 1));
 	if (!tab)
-	{
-		ft_free_array(tab);
 		return (NULL);
-	}
 	return (into_tab(tab, s, tab_nb));
 }

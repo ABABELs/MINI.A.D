@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minisplit_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 21:21:55 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/09/12 18:20:52 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/09 12:31:14 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,15 @@ int	is_sep(char c)
 }
 
 //free tout le tableau de chaine de caractère
-char	**free_all(char **tab, int a)
+char	**free_allin(char **tab, int a)
 {
+	if (!tab)
+		return (NULL);
+	if (!tab[a])
+	{
+		free(tab);
+		return (NULL);
+	}
 	while (0 <= a)
 	{
 		free(tab[a]);

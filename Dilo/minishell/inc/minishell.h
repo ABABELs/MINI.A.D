@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/08 14:19:00 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/09 12:31:35 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		ft_redir_count(char *s, char c, int a, int tab_nb);
 int		ft_count_tab(char *s, int a, int tab_nb);
 int		is_sep(char c);
 void	cpy(char *tab, char *s, int letters, int d);
-char	**free_all(char **tab, int a);
+char	**free_allin(char **tab, int a);
 
 //list alloc
 int		ft_alloc_mantle(char **tab, t_mantle *mantle, t_crust *crust);
@@ -199,7 +199,7 @@ void	ft_env_no_args(char **env, t_core *core);
 
 //print error
 char	*ft_ministrncpy(char *dest, char *src, int a, int b);
-int		ft_print_msg(int a, char *str);
+int		ft_print_msg(int a, char *str, int b);
 
 //open
 int		ft_open_fd(t_mantle *mantle);
@@ -212,7 +212,7 @@ void	ft_free_array(char **array);
 void	node_to_del(t_mantle *lst_cmd);
 void	remove_node(t_list **head, t_list *node_to_remove);
 int		is_node_to_del(t_list *lst);
-void	ft_free_crust(t_crust *crust);
+void	ft_free_crust(t_crust *crust, char **tab);
 
 //herdoc
 void	ft_heredoc(t_mantle *mantle);
