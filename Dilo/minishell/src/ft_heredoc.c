@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:32:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 19:41:12 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 10:31:37 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static void	cmd_fd(t_list *list)
 	while (list->next)
 	{
 		core = (t_core *)list->content;
-		if (ft_find_cmd(list))
-			cmd_core = ft_find_cmd(list);
+		if (core->type == CMD)
+			cmd_core = core;
 		if (core->type == HERDOC)
 		{
 			core = (t_core *)list->next->content;
