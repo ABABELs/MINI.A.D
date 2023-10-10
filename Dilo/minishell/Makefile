@@ -6,7 +6,7 @@
 #    By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 15:27:08 by dilovancand       #+#    #+#              #
-#    Updated: 2023/10/09 17:58:32 by dcandan          ###   ########.fr        #
+#    Updated: 2023/10/10 14:30:46 by dcandan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SOURCES = src/minishell.c src/signal_handler.c \
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 LIBFT_LIB = inc/libft/libft.a
 INC_DIR = inc/
 READLINE = $(shell brew --prefix readline)

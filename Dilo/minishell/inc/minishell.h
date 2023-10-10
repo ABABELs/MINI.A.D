@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 13:12:10 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 14:59:52 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,8 +218,8 @@ void	ft_free_crust(t_crust *crust, int a);
 //herdoc
 void	ft_heredoc(t_mantle *mantle);
 void	quit_heredoc(int sig);
-void	ft_readdoc(t_core *core, t_list *list);
-void	cmd_fd(t_core **cmd_core, t_core *core);
+void	ft_readdoc(t_list *list);
+void	cmd_fd(t_core *cmd_core, t_core *core);
 
 //env
 char	*ft_getenv(t_crust *crust, char *find_env);

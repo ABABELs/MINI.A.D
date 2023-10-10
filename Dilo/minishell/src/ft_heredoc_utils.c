@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:13:29 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 13:16:38 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:56:23 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,31 @@ static int	ft_readingforreal(t_list *list, int fd)
 		input = readline("> ");
 		if (g_mini_sig == 1000)
 			exit(1);
-		else if (input && ft_strcmp(input, "") == 0)
-			exit (0);
-		else if (input && ft_strcmp(input, "\n") == 0)
+		else if (input && !ft_strncmp(input, "\n", ft_strlen(input)))
 			ft_hereline();
-		else if (input && ft_strcmp(input, nextcore->str) != 1)
+		else if ((input && !ft_strncmp(input, "", ft_strlen(input)))
+			|| input == NULL)
+			exit (0);
+		else if (input && !ft_strncmp(input, nextcore->str, ft_strlen(input)))
 			break ;
 		else
-		{
-			ft_printf("input = %s\n", input);
 			write(fd, input, ft_strlen(input));
-		}
 		write(fd, "\n", 1);
 		free(input);
 	}
 	exit (0);
 }
 
-void	ft_readdoc(t_core *core, t_list *list)
+void	ft_readdoc(t_list *list)
 {
 	pid_t	pid;
 	int		fd[2];
 	int		exited;
+	t_core	*nextcore;
 
-	pid = fork();
+	nextcore = (t_core *)list->content;
 	pipe(fd);
+	pid = fork();
 	if (pid == 0)
 		ft_readingforreal(list, fd[1]);
 	else
@@ -78,9 +78,9 @@ void	ft_readdoc(t_core *core, t_list *list)
 		signal(SIGINT, SIG_IGN);
 		waitpid(pid, &exited, 0);
 	}
-	if (fd[1] && !WEXITSTATUS(exited))
-		ft_hsucces(&core, fd);
+	if (!WEXITSTATUS(exited))
+		ft_hsucces(&nextcore, fd);
 	else
-		ft_hfail(&core, fd);
+		ft_hfail(&nextcore, fd);
 	ft_signal();
 }

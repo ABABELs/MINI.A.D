@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/10 13:20:18 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:00:17 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	pipe_or_not(t_crust *crust)
 		lanch_pipe(crust);
 	else
 		return ;
-	print_lst_parsing(crust->lst_cmd->first);
 }
 
 void	wait_all_process(t_crust *crust)
