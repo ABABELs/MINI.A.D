@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:32:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 12:46:37 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:57 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static int	ft_is_heredoc(t_mantle *mantle)
 	return (0);
 }
 
-void	cmd_fd(t_core *cmd_core, t_core *core)
+void	cmd_fd(t_core **cmd_core, t_core *core)
 {
 	int		fd;
 
 	fd = 0;
-	if (cmd_core)
+	if (*cmd_core)
 		fd = core->infile;
-	if (cmd_core && fd > 0)
-		cmd_core->infile = fd;
+	if (*cmd_core && fd > 0)
+		(*cmd_core)->infile = fd;
 }
 
 void	ft_heredoc(t_mantle *mantle)

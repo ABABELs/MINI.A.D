@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:16:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 12:47:22 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:29 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	ft_check_all_fd(t_core *core, t_core *cmd_core, t_core *is_fd)
 			return (-3);
 	}
 	else if (core->type == HERDOC)
-		cmd_fd(cmd_core, is_fd);
+		cmd_fd(&cmd_core, is_fd);
 	return (0);
 }
 

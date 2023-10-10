@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:13:29 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 13:00:42 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:16:38 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static int	ft_readingforreal(t_list *list, int fd)
 		else if (input && ft_strcmp(input, nextcore->str) != 1)
 			break ;
 		else
+		{
+			ft_printf("input = %s\n", input);
 			write(fd, input, ft_strlen(input));
+		}
 		write(fd, "\n", 1);
 		free(input);
 	}
