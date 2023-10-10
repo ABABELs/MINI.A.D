@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/10 10:44:49 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:56:56 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ int	ft_isbuiltins(t_core *core)
 	}
 	if (core->tab && *core->tab)
 	{
-		if (ft_strncmp("echo", l(*core->tab), ft_strlen((*core->tab))) == 0)
+		if (ft_strncmp("echo", l(*core->tab), 5) == 0)
 			return (1);
-		else if (ft_strncmp("cd", l(*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("cd", l(*core->tab), 3) == 0)
 			return (1);
-		else if (ft_strncmp("pwd", l(*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("pwd", l(*core->tab), 4) == 0)
 			return (1);
-		else if (ft_strcmp("export", l(*core->tab)) == 0)
+		else if (ft_strncmp("export", l(*core->tab), 7) == 0)
 			return (1);
-		else if (ft_strcmp("unset", l(*core->tab)) == 0)
+		else if (ft_strncmp("unset", l(*core->tab), 6) == 0)
 			return (1);
-		else if (ft_strncmp("env", l(*core->tab), ft_strlen((*core->tab))) == 0)
+		else if (ft_strncmp("env", l(*core->tab), 4) == 0)
 			return (1);
-		else if (ft_strcmp("exit", l(*core->tab)) == 0)
+		else if (ft_strncmp("exit", l(*core->tab), 5) == 0)
 			return (1);
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:36:04 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/08 14:04:25 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/10 11:42:51 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	env_to_string(t_crust *crust, t_core *core)
 			&& is_quoted_and_who(core->str, i) != 39)
 		{
 			i++;
-			tmp = ft_strjoin(tmp, ft_itoa(g_mini_sig));
+			tmp = tmp_itoa(tmp);
 		}
 		else if (core->str[i - 1] == '$')
 			tmp = ft_strjoin_char(tmp, '$');

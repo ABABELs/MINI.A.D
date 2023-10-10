@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:00 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/03 15:33:00 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/10 11:43:18 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*tmp_itoa(char *tmp)
+{
+	char	*itoa;
+
+	itoa = ft_itoa(g_mini_sig);
+	tmp = ft_strjoin(tmp, itoa);
+	free (itoa);
+	return (tmp);
+}
 
 char	*ft_strjoin_char(char *s1, char s2)
 {

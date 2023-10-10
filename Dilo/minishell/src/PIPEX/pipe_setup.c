@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:05:55 by aabel             #+#    #+#             */
-/*   Updated: 2023/10/08 14:16:27 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/10 11:19:52 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ int	path_in_cmd(t_crust *crust, t_core *core)
 	}
 	if (access(core->str, F_OK | X_OK) == 0 && !opendir(core->str))
 		return (core->pathed = ft_strdup(core->str), 0);
-	ft_message("minishell: ", core->tab[0], ": command not found\n");
+	ft_message("minishell: ", core->str, ": command not found\n");
 	return (1);
 }

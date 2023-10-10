@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:51:02 by dcandan           #+#    #+#             */
-/*   Updated: 2023/10/09 18:15:35 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:35:26 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static void	ft_free_core(t_core *core)
 {
-	if (core->type == REDIR_IN || core->type == REDIR_OUT
-		|| core->type == APPEND || core->type == HERDOC || core->type == FD)
-		free(core->str);
-	if (core->tab)
+	if (core->type == CMD)
 		ft_free_array(core->tab);
+	free(core->str);
 	free(core->pathed);
 	free(core);
 }

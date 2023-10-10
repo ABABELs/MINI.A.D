@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 10:44:35 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:43:47 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,5 +230,6 @@ char	*ft_strjoin_char(char *s1, char s2);
 int		ft_is_envchar(int c);
 int		is_quoted_and_who(char	*input, int goal);
 int		ft_strlen_int(char *str);
+char	*tmp_itoa(char *tmp);
 
 #endif

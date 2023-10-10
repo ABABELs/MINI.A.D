@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:32:53 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/10 10:31:37 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 12:46:37 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,15 @@ static int	ft_is_heredoc(t_mantle *mantle)
 	return (0);
 }
 
-static void	cmd_fd(t_list *list)
+void	cmd_fd(t_core *cmd_core, t_core *core)
 {
-	t_core	*core;
-	t_core	*cmd_core;
 	int		fd;
 
 	fd = 0;
-	while (list->next)
-	{
-		core = (t_core *)list->content;
-		if (core->type == CMD)
-			cmd_core = core;
-		if (core->type == HERDOC)
-		{
-			core = (t_core *)list->next->content;
-			if (cmd_core)
-				fd = core->infile;
-			if (cmd_core && fd > 0)
-				cmd_core->infile = fd;
-		}
-		list = list->next;
-	}
+	if (cmd_core)
+		fd = core->infile;
+	if (cmd_core && fd > 0)
+		cmd_core->infile = fd;
 }
 
 void	ft_heredoc(t_mantle *mantle)
@@ -84,7 +71,6 @@ void	ft_heredoc(t_mantle *mantle)
 	if (ft_is_heredoc(mantle) == 1)
 	{
 		ft_finding_lst(list);
-		cmd_fd(mantle->first);
 	}
 	else
 		return ;

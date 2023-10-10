@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_heredoc_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dilovancandan <dilovancandan@student.42    +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:13:29 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/03 14:45:28 by dilovancand      ###   ########.fr       */
+/*   Updated: 2023/10/10 13:00:42 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
