@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 17:27:15 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 15:48:49 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 10:44:35 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int		ft_ispth(char *str);
 int		ft_isquote(char *str);
 int		ft_after_redir(t_mantle *mantle);
 char	**array_dup(char **array);
+int		remove_quotes(t_mantle *mantle);
 
 //redirection
 int		ft_strcmp(const char *s1, const char *s2);

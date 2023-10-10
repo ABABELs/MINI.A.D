@@ -6,43 +6,13 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:32:05 by dilovancand       #+#    #+#             */
-/*   Updated: 2023/10/09 18:16:40 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 10:45:05 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_mini_sig;
-
-/*
-	récupère la liste chainée contenant les cores les parcours
-	retire les quotes qui ne sont pas dans d'autres quotes
-	dans la chaine de charactère
-*/
-static int	remove_quotes(t_mantle *mantle)
-{
-	t_list	*list;
-	t_core	*core;
-	char	*str;
-
-	list = mantle->first;
-	while (list)
-	{
-		core = (t_core *)list->content;
-		if (!core->str)
-			return (-1);
-		if (ft_isquote(core->str) == 1)
-		{
-			str = ft_cmdisgood(core->str);
-			if (!str)
-				return (-1);
-			free(core->str);
-			core->str = str;
-		}
-		list = list->next;
-	}
-	return (0);
-}
 
 static void	malloc_crust_again(char *str, t_crust *crust)
 {

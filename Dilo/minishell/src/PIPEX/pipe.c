@@ -6,7 +6,7 @@
 /*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 10:16:38 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/09 12:57:56 by dcandan          ###   ########.fr       */
+/*   Updated: 2023/10/10 10:43:11 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static t_list	*ft_lstlast_cmd(t_list *lst)
 
 void	pipe_or_not(t_crust *crust)
 {
-	// print_lst_parsing(crust->lst_cmd->first);
 	if (ft_count_cmds(crust) > 0)
 		lanch_pipe(crust);
 	else

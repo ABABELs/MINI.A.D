@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabel <aabel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dcandan <dcandan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:33 by arthurabel        #+#    #+#             */
-/*   Updated: 2023/10/09 17:21:54 by aabel            ###   ########.fr       */
+/*   Updated: 2023/10/10 10:44:49 by dcandan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,3 @@ void	poop(t_core *core, t_crust *crust)
 	if (!core->tab[1])
 		ft_export_no_args(crust, core);
 }
-
